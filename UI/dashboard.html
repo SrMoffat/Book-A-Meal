@@ -43,7 +43,7 @@
 			<ul>
 				<li><button id = "addMealBtn" class="button_1" style="background-color: #35424a; color: #FFFFFF; width:58%; margin-bottom:5px">Add Meal Option</button></li>
 				<li><button id = "updateMealBtn" class="button_1" style="background-color: #35424a; color: #FFFFFF; width:58%;margin-bottom:5px">Update Meal Options</button></li>
-				<li><button class="button_1" style="background-color: #35424a; color: #FFFFFF; width:58%; margin-bottom:5p">Delete Meal Options</button></li>
+				<li><button id = "deleteMealBtn" class="button_1" style="background-color: #35424a; color: #FFFFFF; width:58%; margin-bottom:5p">Delete Meal Options</button></li>
 			</ul>
 			
 			</div>
@@ -72,6 +72,14 @@
 							  <option value="lunch">Lunch</option>
 							  <option value="dinner">Dinner</option>
 							  <option value="supper">Supper</option>
+							</select>
+							<label for="mealOptions">Accompaniment</label>
+							<select id="mealOptions" name="mealOptions">
+							  <option>Rice</option>
+							  <option>Spaghetti</option>
+							  <option>Ugali</option>
+							  <option>Fries</option>
+							  <option>Mashed Potatoes</option>
 							</select>
 							<label for ="price"> Price</label>
 							<input type="text" id="price" name="price" placeholder="$930">
@@ -135,6 +143,35 @@
 				</div><!--end modal body-->
 			</div><!--end modal content-->
 		</div><!--end modal-->
+		
+		<!-- The Delete Meal Modal -->
+		<div id="deleteMealModal" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2 style="text-align: center">Delete Meal</h2>
+				</div>
+				<div class="modal-body">
+					<div class="container dark">
+						<form action="">
+							<label for="selectMeal">Select Meal</label>
+							<select id="selectMeal" name="selectMeal">
+							    <option>Chicken Drumsticks</option>
+							    <option>Beef Stew</option>
+							    <option>Fried Fish</option>
+							    <option>Fried Liver (Dry)</option>
+							    <option>Fried Liver (Wet)</option>
+							</select>
+							<input type="submit" value="Delete Meal">
+						</form><!--end registration form-->
+					</div><!--end form container-->
+				</div><!--end modal body-->
+				<div class="modal-footer">
+				<br><br>
+				</div><!--end modal body-->
+			</div><!--end modal content-->
+		</div><!--end modal-->
 	
 	
 
@@ -143,10 +180,10 @@
     </footer>
 	<script>
 		// Get the modal
-		var modal = document.getElementById('addMealModal');
+		var modal = document.getElementById('deleteMealModal');
 
 		// Get the button that opens the modal
-		var btn = document.getElementById("addMealBtn");
+		var btn = document.getElementById("deleteMealBtn");
 
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
@@ -167,26 +204,7 @@
 				modal.style.display = "none";
 			}
 		}	
-		
-		var modal = document.getElementById('updateMealModal');
 
-		// Get the button that opens the modal
-		var btn = document.getElementById("updateMealBtn");
-
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
-
-		// When the user clicks on the button, open the modal 
-		btn.onclick = function() {
-			modal.style.display = "block";
-		}
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
 	</script>
 	
 	
