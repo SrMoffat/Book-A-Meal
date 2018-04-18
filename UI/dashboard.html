@@ -43,7 +43,8 @@
 			<ul>
 				<li><button id = "addMealBtn" class="button_1" style="background-color: #35424a; color: #FFFFFF; width:58%; margin-bottom:5px">Add Meal Option</button></li>
 				<li><button id = "updateMealBtn" class="button_1" style="background-color: #35424a; color: #FFFFFF; width:58%;margin-bottom:5px">Update Meal Options</button></li>
-				<li><button id = "deleteMealBtn" class="button_1" style="background-color: #35424a; color: #FFFFFF; width:58%; margin-bottom:5p">Delete Meal Options</button></li>
+				<li><button id = "deleteMealBtn" class="button_1" style="background-color: #35424a; color: #FFFFFF; width:58%; margin-bottom:5px">Delete Meal Options</button></li>
+				<li><a href="makemenu.html" style="text-align: center; color: #ffffff; background-color: #35424a; font-size: 10pt; border-radius: 4px; width: 50% ">Make Daily Menu</a>
 			</ul>
 			
 			</div>
@@ -73,20 +74,13 @@
 							  <option value="dinner">Dinner</option>
 							  <option value="supper">Supper</option>
 							</select>
-							<label for="mealOptions">Accompaniment</label>
-							<select id="mealOptions" name="mealOptions">
-							  <option>Rice</option>
-							  <option>Spaghetti</option>
-							  <option>Ugali</option>
-							  <option>Fries</option>
-							  <option>Mashed Potatoes</option>
-							</select>
+							
 							<label for ="price"> Price</label>
-							<input type="text" id="price" name="price" placeholder="$930">
+							<input type="text" id="price" name="price" placeholder="$12">
 							<label for ="imageUrl"> Image Url</label>
 							<input type="text" id="imageUrl" name="imageUrl" placeholder="https://www.myimages.com/thisone">
-							<label for="mealDecription"> Meal Description</label>
-							<textarea id="mealDecription" name="mealDecription" style="font-family: Arial; color:#a1a4a8">Decsribe the meal in brief
+							<label for="mealDecription"> Meal Description (Ingredients)</label>
+							<textarea id="mealDecription" name="mealDecription" style="font-family: Arial; color:#a1a4a8">Describe the meal in brief
 							</textarea>
 							<input type="submit" value="Add Meal">
 						</form><!--end registration form-->
@@ -180,10 +174,10 @@
     </footer>
 	<script>
 		// Get the modal
-		var modal = document.getElementById('deleteMealModal');
+		var modal = document.getElementById('addMealModal');
 
 		// Get the button that opens the modal
-		var btn = document.getElementById("deleteMealBtn");
+		var btn = document.getElementById("addMealBtn");
 
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
