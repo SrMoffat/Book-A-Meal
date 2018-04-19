@@ -91,6 +91,7 @@
 		</div>
 
 		<div id="userorders" class="tabcontent">
+		<div class="container">
 		    <button class="accordion"><b>Mary</b></button>
 				<div class="panel">
 				  <div style="color: black">
@@ -123,13 +124,47 @@
 					<button class="button_1" id="deliver">Deliver</button>
 				  </div><br>
 				</div>
-			
-		</div>
+			</div><!--end container-->
+		</div><!--end tabcontent-->
 
 		<div id="history" class="tabcontent">
-		    <h3>Contact</h3>
-		    <p>Get in touch, or swing by for a cup of coffee.</p>
-		</div>
+		<div class="container" style="overflow-x:auto">
+		    <table id="orderhist" style="width:100%">
+			  <tr>
+				<th>Order#</th>
+				<th>Customer</th> 
+				<th>Meal</th>
+				<th>Price</th>
+				<th>Order Placed</th>
+				<th>Order Delivered</th>
+			  </tr>
+			  <tr>
+				<td>#17645</td>
+				<td>Mary</td> 
+				<td>Chicken Mamboleo</td>
+				<td>$12.00</td>
+				<td>23 Apr 2018 at 1800 hrs</td>
+				<td>23 Apr 2018 at 1803 hrs</td>
+			  </tr>
+			  <tr>
+				<td>#75647</td>
+				<td>Jane</td> 
+				<td>Submarine</td>
+				<td>$12.00</td>
+				<td>22 Apr 2018 at 1200 hrs</td>
+				<td>22 Apr 2018 at 1203 hrs</td>
+			  </tr>
+			  <tr>
+				<td>#17547</td>
+				<td>Green</td> 
+				<td>Liver Lover</td>
+				<td>$18.00</td>
+				<td>21 Mar 2018 at 1618 hrs</td>
+				<td>21 Mar 2018 at 1620 hrs</td>
+			  </tr>
+			</table>
+		</div><!--end tabcontent container-->
+		</div><!--end tabcontent-->
 
 		<div id="upgrade" class="tabcontent">
 		    <h3>About</h3>
