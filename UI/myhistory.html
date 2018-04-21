@@ -1,0 +1,145 @@
+<!--dashboard.html-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Book meals and view daily offers">
+	<meta name="keywords" content="meals, book, book meals">
+  	<meta name="author" content="Ngige Gitau">
+    <title>Book-A-Meal | Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Book-A-</span> Meal</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Logout</a></li>
+            <li><a href="about.html">Settings</a></li>            
+          </ul>
+        </nav><!--end nav-->
+      </div><!--end branding container-->
+    </header>
+	
+    <section id="dash">
+        <div class="container dark" style = "border-radius: 4px;">
+			<h2> Customer History,</h2><hr>
+			<div class="container" style="margin-left: 10px; float:left" id="avatar"><img src = "hungryy.jpg" alt = "Image"></img></div>
+			
+			<p><b>Status: </b> Customer</p>
+			<p><b>Meal Options: </b>(9)</p>
+			<p><b>Unconfirmed Orders: </b>(2)</p>
+			
+    </section>
+	
+	<section id="main">
+      <div class="container">
+        <article id="main-col">
+			<div class="vertical-menu">
+			<ul>
+				<li><a href="udashboard.html" style="text-align: center; color: #ffffff; background-color: #35424a; font-size: 10pt; border-radius: 4px; width: 50%;margin-bottom:5px; height: 15px ">Dashboard</a></li>				
+			</ul>
+			</div>
+        </article>
+      </div><!--end container-->
+    </section><!--end main section -->
+	<section id="main">
+		<div class="container" style="width: 85%; margin-left: 137px">
+			<button style="font-size: 11pt; width: 15%; border-radius:4px" class="tablink" onclick="openPage('myhistory', this, '#e8491d')" id="defaultOpen">My History <span style="color: #00FF00">(1)</span></button>
+			
+		<div id="myhistory" class="tabcontent">
+		<div class="container">
+		    <button class="accordion"><b>Order#17647</b></button>
+				<div class="panel">
+				  <div style="color: black">
+					<p><b>Chicken Mamboleo</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>Rice</b></p>
+					<p style = "font-size: 9pt"><i>2 chicken drumsticks with plain white rice</i></span></p>
+					<p style="font-size: 10pt"><span style="color: #e8491d; font-size: 10pt">No</span> Salad</p>
+					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
+					<button class="button_1" id="deliver">Change</button>
+					<input type="submit" value="Confirm Order"></input>
+				  </div><br>
+				</div>
+
+			<button class="accordion"><b>Order#15647</b></button>
+				<div class="panel">
+				  <div style="color: black">
+					<p><b>Submarine</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>Ugali</b></p>
+					<p style = "font-size: 9pt"><i>Wet fried fish with thick paste and ugali</i></span></p>
+					<p style="font-size: 10pt"><span style="color: #e8491d; font-size: 10pt">Yes</span> Vegies</p>
+					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
+					<button class="button_1" id="deliver">Change</button>
+					<input type="submit" value="Confirm Order"></input>
+				  </div><br>
+				</div>
+
+			<button class="accordion"><b>Order#13547</b></button>
+				<div class="panel">
+				  <div style="color: black">
+					<p><b>Liver Lover</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>Rice</b></p>
+					<p style = "font-size: 9pt"><i>Dry fried liver with plain white rice</i></span></p>
+					<p style="font-size: 10pt"><span style="color: #e8491d; font-size: 10pt">Yes</span> Salad</p>
+					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 18.00</span> </p><br>
+					<p style="font-size: 7pt"><b>Order placed: </b><span style="color: #e8491d; font-size: 7pt">22 Apr 2018 at 1618hrs</span> </p>
+					<p style="font-size: 7pt"><b>Order delivered: </b><span style="color: #e8491d; font-size: 7pt">22 Apr 2018 at 1620hrs</span> </p>
+					
+					
+				  </div><br>
+				</div>
+			</div><!--end container-->
+		</div><!--end tabcontent-->
+      </div><!--end container-->
+    </section><!--end main section -->
+	
+	
+	
+	 
+    <footer>
+      <p>4fr0c0d3 Copyright &copy; 2018</p>
+    </footer>
+	<script>
+		function openPage(pageName, elmnt, color) {
+    // Hide all elements with class="tabcontent" by default */
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Remove the background color of all tablinks/buttons
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+
+    // Show the specific tab content
+    document.getElementById(pageName).style.display = "block";
+
+    // Add the specific color to the button used to open the tab content
+    elmnt.style.backgroundColor = color;
+}
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+
+	</script>
+	
+	
+  </body>
+</html>
