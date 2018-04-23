@@ -1,7 +1,7 @@
-<!--makemenu.html-->
+<!--menu.html-->
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Book meals and view daily offers">
@@ -9,22 +9,22 @@
   	<meta name="author" content="Ngige Gitau">
     <title>Book-A-Meal | Menu</title>
     <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
+</head>
+<body>
+	<!--The navigation bar -->
     <header>
-      <div class="container">
-        <div id="branding">
-          <h1><span class="highlight">Book-A-</span> Meal</h1>
-        </div>
-        <nav>
-          <ul>
-			<li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="about.html">Settings</a></li>
-			<li><a href="index.html">Logout</a></li>
-          </ul>
-        </nav><!--end nav-->
-      </div><!--end branding container-->
-    </header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Book-A-</span>Meal</h1>
+            </div>
+			<nav>
+				<ul>
+					<li><a href="dashboard.html">Dashboard</a></li>
+					<li><a href="index.html">Logout</a></li>
+				</ul>
+			</nav><!--end nav-->
+        </div><!--end branding container-->
+    </header><!--end navigation-->
 	
     <section id="dash">
         <div class="container dark" style = "border-radius: 4px;">
@@ -67,13 +67,10 @@
 				  <div style="color: black; float: left; margin-bottom: 10px">
 					<p><b>Two sausages, bacon and toast</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>hot chocalate with milk</b></p>
 					<form action="">
-						<label for="addon"><b>Add-ons</b><span style="font-size:8pt"> *@100 extra</span></label>
-						<select id="addon" name= "addon" style="width: 20%">
-						  <option>No</option>
-						  <option>Yes</option>						 
-						</select><div></div>
-						<label for="addons" style="margin-left: 2.7%"><b>Select Add-on</b></label>
-						<select id="addons" name= "addons" style="width: 20%">
+						
+						<label for="addons"><b>Select Add-on</b></label>
+						<select id="addons" name= "addons" style="width: 30%">
+						  <option>No Add-on</option>
 						  <option>Cheese</option>
 						  <option>Gravy</option>	
 						  <option>Ham</option>
@@ -92,53 +89,49 @@
 
 		<div id="lunch" class="tabcontent">
 				<div class="container">
-				<button class="accordion"><b>Chicken Mamboleo</b> <i>with</i> <b>Rice</b> ...<span style="color: #e8491d; font-size: 8pt"> $12.00</span></button>
-				<div class="panel">
-				<div class="container" style="margin-left: 6px; margin-top:10px; float:left" id="avatar"><img src = "https://245xq72m7u8l39tsbf33v0j6-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/Chicken-Waffles-V2.jpg" alt = "Image"></img></div>
-				  <div style="color: black; float: left; margin-bottom: 10px">
-					<p><b>2 chicken drumsticks</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>plain white rice</b></p>
-					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
-					<button class="button_2" id="deliver">Remove</button>
-				  </div><br>
-				</div>
+					<button class="accordion"><b>Chicken Mamboleo</b> <i>with</i> <b>Rice</b> ...<span style="color: #e8491d; font-size: 8pt"> $12.00</span></button>
+					<div class="panel">
+						<div class="container" style="margin-left: 6px; margin-top:10px; float:left" id="avatar"><img src = "https://245xq72m7u8l39tsbf33v0j6-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/Chicken-Waffles-V2.jpg" alt = "Image"></img></div>
+						    <div style="color: black; float: left; margin-bottom: 10px">
+							    <p><b>2 chicken drumsticks</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>plain white rice</b></p>
+							    <p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
+							    <button class="button_2" id="deliver">Remove</button>
+						  </div><br>
+					</div>
 
-				<button class="accordion"><b>Submarine</b> <i>with</i> <b>Ugali</b> ...<span style="color: #e8491d; font-size: 8pt"> $12.00</span></button>
-				<div class="panel">
-				  <div class="container" style="margin-left: 6px; margin-top:10px; float:left" id="avatar"><img src = "https://245xq72m7u8l39tsbf33v0j6-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/Chicken-Waffles-V2.jpg" alt = "Image"></img></div>
-				  <div style="color: black; float: left; margin-bottom: 10px">
-					<p><b>Wet fried fish </b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>thick paste and ugali</b></p>
-					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
-					<button class="button_2" id="deliver">Remove</button>
-				  </div><br>
-				</div>
+					<button class="accordion"><b>Submarine</b> <i>with</i> <b>Ugali</b> ...<span style="color: #e8491d; font-size: 8pt"> $12.00</span></button>
+					<div class="panel">
+					    <div class="container" style="margin-left: 6px; margin-top:10px; float:left" id="avatar"><img src = "https://245xq72m7u8l39tsbf33v0j6-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/Chicken-Waffles-V2.jpg" alt = "Image"></img></div>
+					    <div style="color: black; float: left; margin-bottom: 10px">
+							<p><b>Wet fried fish </b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>thick paste and ugali</b></p>
+							<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
+							<button class="button_2" id="deliver">Remove</button>
+					    </div><br>
+					</div>
 
-				<button class="accordion"><b>Liver Lover</b> <i>with</i> <b>Rice</b> ...<span style="color: #e8491d; font-size: 8pt"> $18.00</span></button>
-				<div class="panel">
-				  <div class="container" style="margin-left: 6px; margin-top:10px; float:left" id="avatar"><img src = "https://245xq72m7u8l39tsbf33v0j6-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/Chicken-Waffles-V2.jpg" alt = "Image"></img></div>
-				  <div style="color: black; float: left; margin-bottom: 10px">
-					<p><b>Dry fried liver</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>plain white rice</b></p>
-					<form action="">
-						<label for="addon"><b>Add-ons</b><span style="font-size:8pt"> *@100 extra</span></label>
-						<select id="addon" name= "addon" style="width: 20%">
-						  <option>No</option>
-						  <option>Yes</option>						 
-						</select><div></div>
-						<label for="addons" style="margin-left: 2.7%"><b>Select Add-on</b></label>
-						<select id="addons" name= "addons" style="width: 20%">
-						  <option>Salad</option>
-						  <option>Coleslaw</option>	
-						  <option>Vegies</option>
-						  <option>Kachumbari</option>
-						  <option>Sauce</option>
-						</select>
-					
-						<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
-						<input type="submit" value="Order"></input>
-					</form><br>
-				  </div><!--end div-->
-				</div><!--end panel-->
+					<button class="accordion"><b>Liver Lover</b> <i>with</i> <b>Rice</b> ...<span style="color: #e8491d; font-size: 8pt"> $18.00</span></button>
+					<div class="panel">
+					    <div class="container" style="margin-left: 6px; margin-top:10px; float:left" id="avatar"><img src = "https://245xq72m7u8l39tsbf33v0j6-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/Chicken-Waffles-V2.jpg" alt = "Image"></img></div>
+					    <div style="color: black; float: left; margin-bottom: 10px">
+							<p><b>Dry fried liver</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>plain white rice</b></p>
+							<form action="">
+								<div></div>
+								<label for="addons"><b>Select Add-on</b></label>
+								<select id="addons" name= "addons" style="width: 40%">
+								    <option>No Add-on</option>
+								    <option>Salad</option>
+								    <option>Coleslaw</option>	
+								    <option>Vegies</option>
+								    <option>Kachumbari</option>
+								    <option>Sauce</option>
+								</select>
+								<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
+								<input type="submit" value="Order"></input>
+							</form><br>
+					  </div><!--end div-->
+					</div><!--end panel-->
 				</div><!--end container-->
-		</div><!--end tabcontent container-->
+		</div><!--end lunch container-->
 		
 		    
 		<div id="dinner" class="tabcontent">
@@ -156,7 +149,7 @@
 				<button class="accordion"><b>Swine Dine</b> <i>with</i> <b>Ugali</b> ...<span style="color: #e8491d; font-size: 8pt"> $10.00</span></button>
 				<div class="panel">
 				  <div class="container" style="margin-left: 6px; margin-top:10px; float:left" id="avatar"><img src = "https://245xq72m7u8l39tsbf33v0j6-wpengine.netdna-ssl.com/wp-content/uploads/2015/06/Chicken-Waffles-V2.jpg" alt = "Image"></img></div>
-				  <div style="color: black">
+				  <div style="color: black; float: left; margin-bottom: 10px">
 					<p><b>Wet fried pork with thick paste </b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>ugali</b></p>
 					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 10.00</span> </p>
 					<button class="button_2" id="deliver">Remove</button>
@@ -168,13 +161,9 @@
 				  <div style="color: black; float: left; margin-bottom: 10px">
 					<p><b>Wet fried tender lamb chops</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>plain white rice</b></p>
 					<form action="">
-						<label for="addon"><b>Add-ons</b><span style="font-size:8pt"> *@100 extra</span></label>
-						<select id="addon" name= "addon" style="width: 20%">
-						  <option>No</option>
-						  <option>Yes</option>						 
-						</select><div></div>
-						<label for="addons" style="margin-left: 2.7%"><b>Select Add-on</b></label>
-						<select id="addons" name= "addons" style="width: 20%">
+						
+						<label for="addons"><b> Select Add-on<span style="font-size:8pt"> *@$1.00 extra</span></b></label>
+						<select id="addons" name= "addons" style="width: 40%">
 						  <option>Salad</option>
 						  <option>Coleslaw</option>	
 						  <option>Vegies</option>
@@ -197,15 +186,18 @@
 			</div>
 			</div>
 			</div>
-		</div>
-    </section><!--end main section -->
+			</div>
+		</div><!--end desserts container-->
+    </section><!--end main dash section -->
 	
 			
-      </div>
-	</section>
+ 
+	
+	<footer>
+        <p>4fr0c0d3 Copyright &copy; 2018</p>
+    </footer>
 			
 <script>
-
 		function openPage(pageName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
@@ -241,19 +233,6 @@ for (i = 0; i < acc.length; i++) {
     } 
   });
 }
-
-	</script>
-	
-
-
-	
-	 
-	
-
-    <footer>
-      <p>4fr0c0d3 Copyright &copy; 2018</p>
-    </footer>
-	
-	
-  </body>
+</script>
+</body>
 </html>

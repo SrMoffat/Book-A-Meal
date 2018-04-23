@@ -1,48 +1,51 @@
 <!--about.html-->
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Book meals and view daily offers">
-	  <meta name="keywords" content="meals, book, book meals">
+	<meta name="keywords" content="meals, book, book meals">
   	<meta name="author" content="Ngige Gitau">
     <title>Book-A-Meal | About</title>
     <link rel="stylesheet" href="./css/style.css">
-  </head>
-  <body>
+</head>
+
+<body>
+	<!--The navigation bar-->
     <header>
-      <div class="container">
-        <div id="branding">
-          <h1><span class="highlight">Book-A-</span>Meal</h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="current"><a href="about.html">About</a></li>
-          </ul>
-        </nav>
+        <div class="container">
+            <div id="branding">
+               <h1><span class="highlight">Book-A-</span>Meal</h1>
+            </div>
+			<nav>
+			    <ul>
+				    <li><a href="index.html">Home</a></li>
+				    <li class="current"><a href="about.html">About</a></li>
+			    </ul>
+			</nav>
       </div>
     </header>
 
     <section id="main">
-      <div class="container">
-        <article id="main-col">
-          <h1 class="page-title">About Us</h1>
-         <p class="dark">
-<b>Book-A-Meal</b> is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. The application users with admin credentials can manage meal options, setup menus for a specific day, see the orders made by other users, view the summary of daily earnings, and access order history.</p>
-	 <p class="dark">
-	 A <b>caterer</b> can manage meal options (i.e: add, modify and delete), Setup menu for a specific day, See the orders made by the customers, See amount of money made by end of day, See order history, Add other caterers</p>
-	 </p>
-	 <p class="dark">
-	 A <b>customer</b> can create an account and log in, See the menu for a specific day, Select an option out of the menu. The customers can change their meal choice, see order history, and get notifications when the menu for the day has been set.
-	 </p>
-        </article>
+		<div class="container">
+			<article id="main-col">
+				<h1>About Us</h1>
+				<p class="dark">
+					<b><span style="color: #C67417">Book-A-Meal</span></b> is an application that allows customers to make food orders and helps the food vendor know what the customers want to eat. The application users with admin credentials can manage meal options, setup menus for a specific day, see the orders made by other users, view the summary of daily earnings, and access order history.
+				</p>
+				
+				<p class="dark">
+					A <b><span style="color: #C67417">caterer</span></b> can manage meal options (i.e: add, modify and delete), Setup menu for a specific day, See the orders made by the customers, See amount of money made by end of day, See order history, Add other caterers
+				</p>
+	
+				<p class="dark">
+					A <b><span style="color: #C67417">customer</span></b> can create an account and log in, See the menu for a specific day, Select an option out of the menu. The customers can change their meal choice, see order history, and get notifications when the menu for the day has been set.
+				</p>
+			</article><!--end main-col-->
 
-        <aside id="sidebar">
-          
-            
-				<div class="vertical-menu" style="margin-top: 50px">
+			<aside id="sidebar">
+				<div class="vertical-menu" >
 					<a href="#" class="active">Let's dig in!</a>
 					<!-- Trigger the Modal -->
 					<a href="#registerModal"><button class = "button_1" id="registerBtn">Register</button></a>
@@ -50,48 +53,50 @@
 					<!-- The Modal -->
 					<div id="registerModal" class="modal">
 						<!-- Modal content -->
-					<div class="modal-content">
-						<div class="modal-header">
-							<span class="close">&times;</span>
-							<h2 style = "text-align: center">Register</h2>
-						</div>
-						 <div class="modal-body">
-							<div class="container dark">
-								<form action="">
-
-									<label for="username"> Username</label>
-									<input type="text" id="username" name="username" placeholder="Enter username">
-									
-									<label for="email"> Email</label>
-									<input type="email" id="email" name="email" placeholder="Enter email">
-									
-									<label for="password"> Password</label>
-									<input type="password" id="password" name="password" placeholder="Enter password">
-
-									<label for="cpassword">Confirm Password</label>
-									<input type="password" id="cpassword" name="cpassword" placeholder="Confirm password">
-
-									<label for="account">Account Type</label>
-									<select id="account" name="account">
-									  <option value="caterer">Caterer</option>
-									  <option value="customer">Customer</option>
-									</select>
-									<input type="submit" value="Register">
-
-								</form>
+					    <div class="modal-content">
+							<div class="modal-header">
+								<span class="close">&times;</span>
+								<h2 style = "text-align: center">Register</h2>
 							</div>
-						 </div>
-						 <div class="modal-footer">
-						 <br><br>
-						 
-							
-						 </div>
-					</div>
+							<div class="modal-body">
+								<div class="container dark">
+									<form action="">
 
+										<label for="username"> Username</label>
+										<input type="text" id="username" name="username" placeholder="Enter username">
+										
+										<label for="email"> Email</label>
+										<input type="email" id="email" name="email" placeholder="Enter email">
+										
+										<label for="password"> Password</label>
+										<input type="password" id="password" name="password" placeholder="Enter password">
+
+										<label for="cpassword">Confirm Password</label>
+										<input type="password" id="cpassword" name="cpassword" placeholder="Confirm password">
+
+										<label for="account">Account Type</label>
+										<select id="account" name="account">
+										  <option value="caterer">Caterer</option>
+										  <option value="customer">Customer</option>
+										</select>
+										<input type="submit" value="Register">
+
+									</form><!--end modal form-->
+								</div><!--end container dark-->
+							 </div><!--end modal body-->
+						 <div class="modal-footer"><br><br></div>
+						</div><!--end modal content-->
 					</div><!--end modal-->
 				  <a href="login.html"><button class = "button_2" id="loginBtn" style="padding-left: 24px;padding-right: 30px;">Log In</button></a>
 				 </div>
-				 <script>
+			</aside><!--end aside-->
+      </div><!--end container-->
+    </section><!--end main section -->
+
+    <footer>
+      <p>4fr0c0d3, Copyright &copy; 2018</p>
+    </footer><!--end footer-->
+	<script>
 					// Get the modal
 					var modal = document.getElementById('registerModal');
 
@@ -118,15 +123,5 @@
 						}
 					}				 
 				 </script>
-            
-			
-         
-        </aside>
-      </div><!--end container-->
-    </section><!--end main section -->
-
-    <footer>
-      <p>4fr0c0d3, Copyright &copy; 2018</p>
-    </footer>
-  </body>
+</body>
 </html>

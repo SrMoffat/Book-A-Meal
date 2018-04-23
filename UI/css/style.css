@@ -1,127 +1,3 @@
-img {
-    border: 1px solid #ddd; /* Gray border */
-    border-radius: 4px;  /* Rounded border */
-    padding: 5px; /* Some padding */
-    width: 150px; /* Set a small width */
-}
-
-/* Add a hover effect (blue shadow) */
-img:hover {
-    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-}
-
-/* Set height of body and the document to 100% to enable "full page tabs" */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial;
-}
-
-/* Style tab links */
-.tablink {
-  background-color: #35424a;
-  color: white;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  font-size: 17px;
-  width: 25%;
-}
-
-.tablink:hover {
-  background-color: #777;
-}
-
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: white;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
-}
-
-#daymenu {background-color: #35424a;}
-#userorders {background-color: #35424a;}
-#history {background-color: #35424a;}
-#upgrade {background-color: #35424a;}
-
-/* Style the buttons that are used to open and close the accordion panel */
-.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
-    background-color: #ccc;
-}
-
-/* Style the accordion panel. Note: hidden by default */
-
-.panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-.accordion:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
-    color: #777;
-    float: right;
-    margin-left: 5px;
-}
-
-.active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
-}
-
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 15px;
-}
-th {
-    text-align: left;
-	
-}
-table {
-    border-spacing: 5px;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-tr:hover {
-	background-color: #777;
-}
-
-
-
-
 /*
 Custom CSS Stylesheet
 Author: Ngige Gitau
@@ -131,13 +7,13 @@ Updated: 18th April 2018
 */
 
 body{
-	font: 15px/1.5 Arial, Helvetica,sans-serif;
+	font: 15px/1.5 "Comic Sans MS", cursive, sans-serif;
 	padding:0;
 	margin:0;
 	background-color:#f4f4f4;
 }
 
-/* Global */
+/* ----- Global ----- */
 .container{
 	width:80%;
 	margin:auto;
@@ -151,7 +27,7 @@ ul{
 
 .button_1{
 	height:38px;
-	background:#e8491d;
+	background:#C67417;
 	border-radius: 4px;	
 	border:0;
 	padding-left: 20px;
@@ -175,8 +51,6 @@ ul{
 	padding-right:20px;
 	color:#ffffff;
 }
-
-
 .dark{
 	padding:15px;
 	background:#35424a;
@@ -184,7 +58,8 @@ ul{
 	margin-top:10px;
 	margin-bottom:10px;
 }
-/* The Modal (background) */
+
+/* ----- The Modal ----- */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -198,7 +73,7 @@ ul{
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
+/* ----- The Modal Content ----- */
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
@@ -207,7 +82,7 @@ ul{
     width: 80%; /* depending on screen size */
 }
 
-/* The Close Button */
+/* ----- The Close Button ----- */
 .close {
     color: #aaa;
     float: right;
@@ -221,24 +96,24 @@ ul{
     text-decoration: none;
     cursor: pointer;
 }
-/* Modal Header */
+/* ----- Modal Header ----- */
 .modal-header {
     padding: 2px 16px;
     background-color: #35424a;
     color: white;
 }
 
-/* Modal Body */
+/* ----- Modal Body ----- */
 .modal-body {padding: 2px 16px;}
 
-/* Modal Footer */
+/* ----- Modal Footer ----- */
 .modal-footer {
     padding: 2px 16px;
     background-color: #35424a;
     color: white;
 }
 
-/* Modal Content */
+/* ----- Modal Content ----- */
 .modal-content {
     position: relative;
     background-color: #fefefe;
@@ -251,7 +126,7 @@ ul{
     animation-duration: 0.4s
 }
 
-/* Add Animation */
+/* ----- Add Animation ----- */
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top: 0; opacity: 1}
@@ -301,15 +176,52 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #45a049;
 }
+/* ----- Tables ----- */
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+th {
+    text-align: left;
+	
+}
+table {
+    border-spacing: 5px;
+}
+table {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+tr:hover {
+	background-color: #777;
+}
 
 
-/* Header **/
+/* ----- Header ----- */
 header{
 	background:#35424a;
 	color:#ffffff;
 	padding-top:30px;
 	min-height:70px;
-	border-bottom:#e8491d 3px solid;
+	border-bottom:#C67417 3px solid;
+	margin-bottom: 10px;
+	font-family:"Comic Sans MS", cursive, sans-serif;
+	
+	
 }
 
 header a{
@@ -339,24 +251,77 @@ header nav{
 }
 
 header .highlight, header .current a{
-	color:#e8491d;
+	color:#C67417;
 	font-weight:bold;
+	
 }
 
 header a:hover{
 	color:#cccccc;
 	font-weight:bold;
 }
+* {box-sizing:border-box}
 
-/* Showcase --> try a carousel later*/
+
+/* ----- Showcase ----- */
 #showcase{
 	min-height:400px;
-	background:url('../Food.jpg') no-repeat 0 -50px;
-	text-align:center;
-	color:#35424a;
+}
+/* ----- Slideshow container ----- */
+.slideshow-container {
+    max-width: 1300px;
+    position: relative;
+    margin: auto;
+}
+/* ----- Hide the images by default ----- */
+.mySlides {
+    display: none;	
+}
+/* ----- Fading animation ----- */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+/* ----- Caption text ----- */
+.text {
+  color: #f2f2f2;
+  font-weight:bold;
+  font-size: 50px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+/* ----- Next & previous buttons ----- */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
 }
 
-/* Newsletter */
+/* ----- Position the "next button" to the right ----- */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* ----- Newsletter ----- */
 #newsletter{
 	padding:15px;
 	color:#ffffff;
@@ -366,10 +331,9 @@ header a:hover{
 #newsletter .button_1 {
 	margin-top:3px;
 	margin-left: 450px;
-  
 }
 
-/* Boxes */
+/* ----- Boxes ----- */
 #boxes{
 	margin-top:20px;
 }
@@ -384,24 +348,7 @@ header a:hover{
 #boxes .box img{
 	width:90px;
 }
-
-/* Sidebar */
-aside#sidebar{
-	float:right;
-	width:30%;
-	margin-top:10px;
-}
-
-aside#sidebar .quote input, aside#sidebar .quote textarea{
-  width:90%;
-  padding:5px;
-}
-#registerBtn {
-	
-  
-}
-
-/* Vertical Navigation */
+/* ----- Vertical Navigation ----- */
 .vertical-menu {
     width: 300px; /* Setting the width */
 }
@@ -423,56 +370,170 @@ aside#sidebar .quote input, aside#sidebar .quote textarea{
     color: white;
 }
 
-/* Main-col */
+/* ----- Sidebar ----- */
+aside#sidebar{
+	float:right;
+	width:30%;
+	margin-top:60px;
+}
+aside#sidebar .button_1, aside#sidebar .button_2{
+	margin-left:90px ;
+}
+
+aside#sidebar .quote input, aside#sidebar .quote textarea{
+  width:90%;
+  padding:5px;
+}
+
+/* ----- Main-col----- */
 article#main-col{
   float:left;
   width:65%;
 }
+#addMealBtn{
+	background-color: #35424a; 
+	color: #FFFFFF; 
+	width:58%; 
+	margin-bottom:5px;
+}
+#updateMealBtn{
+	background-color: #35424a; 
+	color: #FFFFFF; 
+	width:58%; 
+	margin-bottom:5px;
+}
+#deleteMealBtn{
+	background-color: #35424a; 
+	color: #FFFFFF; 
+	width:58%; 
+	margin-bottom:5px;
+}
+img {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+}
 
-/* Services */
-ul#services li{
-  list-style: none;
-  padding:20px;
-  border: #cccccc solid 1px;
-  margin-bottom:5px;
-  background:#e6e6e6;
+/* Add a hover effect (blue shadow) */
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/* Set height of body and the document to 100% to enable "full page tabs" */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #35424a;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#daymenu {background-color: #35424a;}
+#userorders {background-color: #35424a;}
+#history {background-color: #35424a;}
+#upgrade {background-color: #35424a;}
+
+
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
 footer{
   padding:20px;
   margin-top:20px;
-  color:#e8491d;
+  color:#C67417;
   background-color:#35424a;
   text-align: center;
 }
 
 /* Media Queries */
 @media(max-width: 768px){
-  header #branding,
-  header nav,
-  header nav li,
-  #newsletter h1,
-  #newsletter form,
-  #boxes .box,
-  article#main-col,
-  aside#sidebar{
-    float:none;
-    text-align:center;
-    width:100%;
+	header #branding,
+	header nav,
+	header nav li,
+	#newsletter h1,
+	#newsletter form,
+	#boxes .box,
+	article#main-col,
+	aside#sidebar{
+	float:none;
+	text-align:center;
+	width:100%;
   }
 
-  header{
+header{
     padding-bottom:20px;
-  }
+}
 
-  #showcase h1{
+#showcase h1{
     margin-top:40px;
-  }
+}
 
-  #newsletter button, .quote button{
+#newsletter button, .quote button{
     display:block;
     width:100%;
-  }
+}
+
 
   #newsletter form input[type="email"], .quote input, .quote textarea{
     width:100%;
