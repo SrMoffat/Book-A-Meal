@@ -11,7 +11,7 @@ For the dashboard pages navigate to the Github Pages site --> https://srmoffat.g
 ![Dashboard Image](Admin.png)
 
 # Menu
-![Menu Image](C:/Users/Admin/Desktop/Book-A-Meal/menu.png)
+![Menu Image](menu.png)
 
 # Orders
 ![Orders Image](C:/Users/Admin/Desktop/Book-A-Meal/orders.png)
