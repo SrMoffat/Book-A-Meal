@@ -14,4 +14,4 @@ For the dashboard pages navigate to the Github Pages site --> https://srmoffat.g
 ![](menu.png)
 
 # Orders
-![](C:/Users/Admin/Desktop/Book-A-Meal/orders.png)
+![](orders.png)
