@@ -4,3 +4,5 @@ Book-A-Meal is an application that allows users (customers) to make food orders 
 You can view the pages for the UI on the Github Pages site --> https://srmoffat.github.io/Book-A-Meal/UI/index.html
 For the dashboard pages navigate to the Github Pages site --> https://srmoffat.github.io/Book-A-Meal/UI/dashboard.html
 
+# Homepage
+![Homepage Image](Admin.png)
