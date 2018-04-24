@@ -5,8 +5,6 @@ Book-A-Meal is an application that allows users (customers) to make food orders 
 #Book-A-Meal UI Templates
 You can view my templates here --> https://srmoffat.github.io/Book-A-Meal/UI/index.html
 
-
-=======
 # UI Templates 
 You can view the pages for the UI on the Github Pages site --> https://srmoffat.github.io/Book-A-Meal/UI/index.html
 For the dashboard pages navigate to the Github Pages site --> https://srmoffat.github.io/Book-A-Meal/UI/dashboard.html
