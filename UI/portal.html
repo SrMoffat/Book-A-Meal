@@ -1,0 +1,239 @@
+<!--portal.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Book meals and view daily offers">
+	<meta name="keywords" content="meals, book, book meals">
+  	<meta name="author" content="Ngige Gitau">
+    <title>Book-A-Meal | Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!--The Navigation bar-->
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Book-A-</span>Meal</h1>
+            </div>
+			<nav>
+				<ul>
+					<li><a href="dashboard.html">Dashboard</a></li> 
+					<li><a href="index.html">Logout</a></li>
+				</ul>
+			</nav><!--end nav-->
+        </div><!--end branding container-->
+    </header>
+	
+    <section id="dash">
+        <div class="container dark" style = "border-radius: 4px;">
+			<h2> Caterer's Portal,</h2><hr>
+			<div class="container" style="margin-left: 10px; float:left" id="avatar"><img src = "Chef.png" alt = "Image"></img></div>
+			
+			<p><b>Status: </b> Caterer</p>
+			<p><b>Meal Options: </b>(4)</p>
+			<p><b>Current Orders: </b>(14)</p>
+			<p><b>Earnings: </b> <span style="color:#00FF00">$ 2,167.45</span></p>
+		</div>
+    </section>
+	
+	
+	<section id="main">
+		<div class="container" style="width: 82%; border-radius:4px">
+			<button style="font-size: 11pt" class="tablink" onclick="openPage('daymenu', this, '#e8491d')">Make Day's Menu</button>
+			<button style="font-size: 11pt" class="tablink" onclick="openPage('userorders', this, '#e8491d')" id="defaultOpen">Customer Orders <span style="color: #00FF00">(3)</span></button>
+			<button style="font-size: 11pt" class="tablink" onclick="openPage('history', this, '#e8491d')">Order History</button>
+			<button style="font-size: 11pt" class="tablink" onclick="openPage('upgrade', this, '#e8491d')">Upgrade User</button>
+	    
+		<div id="daymenu" class="tabcontent">
+		<div class="container">
+		<div class="container">
+		<div class="container">			
+			<form action="">
+				<label for="mealName"> Combo Name</label>
+				<input type="text" id="comboName" name="comboName" placeholder="Enter meal">
+				
+				<label for="mealCategory">Meal Category</label>
+				<select id="mealCategory" name="mealCategory">
+				  <option value="breakfast">Breakfast</option>
+				  <option value="brunch">Brunch</option>
+				  <option value="lunch">Lunch</option>
+				  <option value="dinner">Dinner</option>
+				  <option value="supper">Supper</option>
+				</select>
+				
+				<label for="meal">Meal Option</label>
+				<select id="meal" name="meal">
+				  <option>Chicken Drumsticks</option>
+				  <option>Chicken Burst</option>
+				  <option>Beef Fry (wet)</option>
+				  <option>Beef Fry (dry)</option>
+				  <option>Fried Liver</option>
+				</select>
+				
+				<label for="mealOptions">Accompaniment</label>
+				<select id="mealOptions" name="mealOptions">
+				  <option>Rice</option>
+				  <option>Spaghetti</option>
+				  <option>Ugali</option>
+				  <option>Fries</option>
+				  <option>Mashed Potatoes</option>
+				</select>
+				<label for ="price"> Price</label>
+				<input type="text" id="price" name="price" placeholder="$12">
+				
+				<input type="submit" value="Add Menu Option">
+			</form>
+		</div>
+		</div>
+		</div>
+		</div>
+
+		<div id="userorders" class="tabcontent">
+		<div class="container">
+		    <button class="accordion"><b>Mary</b></button>
+				<div class="panel">
+				  <div style="color: black">
+					<p><b>Chicken Mamboleo</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>Rice</b></p>
+					<p style = "font-size: 9pt"><i>2 chicken drumsticks with plain white rice</i></span></p>
+					<p style="font-size: 10pt"><span style="color: #e8491d; font-size: 10pt">No</span> Salad</p>
+					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
+					<button class="button_1" id="deliver">Deliver</button>
+				  </div><br>
+				</div>
+
+			<button class="accordion"><b>Jane</b></button>
+				<div class="panel">
+				  <div style="color: black">
+					<p><b>Submarine</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>Ugali</b></p>
+					<p style = "font-size: 9pt"><i>Wet fried fish with thick paste and ugali</i></span></p>
+					<p style="font-size: 10pt"><span style="color: #e8491d; font-size: 10pt">Yes</span> Vegies</p>
+					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 12.00</span> </p>
+					<button class="button_1" id="deliver">Deliver</button>
+				  </div><br>
+				</div>
+
+			<button class="accordion"><b>Green</b></button>
+				<div class="panel">
+				  <div style="color: black">
+					<p><b>Liver Lover</b> <span style="color: #e8491d; font-size: 10pt"> served with </span> <b>Rice</b></p>
+					<p style = "font-size: 9pt"><i>Dry fried liver with plain white rice</i></span></p>
+					<p style="font-size: 10pt"><span style="color: #e8491d; font-size: 10pt">Yes</span> Salad</p>
+					<p style="font-size: 10pt"><b>Total: </b><span style="color: #e8491d; font-size: 10pt">$ 18.00</span> </p>
+					<button class="button_1" id="deliver">Deliver</button>
+				  </div><br>
+				</div>
+			</div><!--end container-->
+		</div><!--end tabcontent-->
+
+		<div id="history" class="tabcontent">
+		<div class="container" style="overflow-x:auto">
+		    <table id="orderhist" style="width:100%">
+			  <tr>
+				<th>Order#</th>
+				<th>Customer</th> 
+				<th>Meal</th>
+				<th>Price</th>
+				<th>Order Placed</th>
+				<th>Order Delivered</th>
+			  </tr>
+			  <tr>
+				<td>#17645</td>
+				<td>Mary</td> 
+				<td>Chicken Mamboleo</td>
+				<td>$12.00</td>
+				<td>23 Apr 2018 at 1800 hrs</td>
+				<td>23 Apr 2018 at 1803 hrs</td>
+			  </tr>
+			  <tr>
+				<td>#75647</td>
+				<td>Jane</td> 
+				<td>Submarine</td>
+				<td>$12.00</td>
+				<td>22 Apr 2018 at 1200 hrs</td>
+				<td>22 Apr 2018 at 1203 hrs</td>
+			  </tr>
+			  <tr>
+				<td>#17547</td>
+				<td>Green</td> 
+				<td>Liver Lover</td>
+				<td>$18.00</td>
+				<td>21 Mar 2018 at 1618 hrs</td>
+				<td>21 Mar 2018 at 1620 hrs</td>
+			  </tr>
+			</table>
+		</div><!--end tabcontent container-->
+		</div><!--end tabcontent-->
+
+		<div id="upgrade" class="tabcontent">
+		    <div class="container">	
+			<div class="container">	
+			<div class="container">	
+			<form action="">
+				<label for="pickUser"> Select User</label>
+				<select id="pickUser" name= "pickUser">
+				  <option>Mary</option>
+				  <option>Jane</option>
+				  <option>Green</option>
+				</select>
+				<input name="upgrade" type="submit" value="Upgrade">
+				<input name="orderhistory" type="submit" value="OrderHistory">
+			</form>
+			</div>
+			</div>
+			</div>
+		</div>
+      </div><!--end container-->
+    </section><!--end main section -->
+	
+	
+	
+	
+	
+
+    <footer>
+      <p>4fr0c0d3 Copyright &copy; 2018</p>
+    </footer>
+	<script>
+		function openPage(pageName, elmnt, color) {
+    // Hide all elements with class="tabcontent" by default */
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Remove the background color of all tablinks/buttons
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+
+    // Show the specific tab content
+    document.getElementById(pageName).style.display = "block";
+
+    // Add the specific color to the button used to open the tab content
+    elmnt.style.backgroundColor = color;
+}
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+
+	</script>
+	
+	
+  </body>
+</html>

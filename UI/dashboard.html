@@ -1,0 +1,235 @@
+<!--dashboard.html-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Book meals and view daily offers">
+	<meta name="keywords" content="meals, book, book meals">
+  	<meta name="author" content="Ngige Gitau">
+    <title>Book-A-Meal | Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<!--The navigation bar-->
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Book-A-</span>Meal</h1>
+            </div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Logout</a></li>
+				</ul>
+			</nav><!--end nav-->
+        </div><!--end branding container-->
+    </header>
+	
+	<!--The jumbotron section -->
+    <section id="dash">
+        <div class="container dark" style = "border-radius: 4px">
+			<h2> Welcome <span style="color: #C67417">Caterer</span>,</h2><hr>
+			<div class="container" style="margin-left: 10px; float:left" id="avatar"><img src = "Chef.png" alt = "Image"></img></div>
+			<div>
+				<p><b>Status: </b> Caterer</p>
+				<p><b>Meal Options: </b>(4)</p>
+				<p><b>Current Orders: </b>(14)</p>
+				<p><b>Earnings: </b> <span style="color:#00FF00">$ 2,167.45</span></p>
+			</div>
+		</div><!--end container-->
+    </section><!--end jumbotron section-->
+	
+	<!-- Main section -->
+	<section id="main">
+		<div class="container">
+			<article id="main-col">
+				<div class="vertical-menu">
+					<ul>
+						<li><button id = "addMealBtn" class="button_1">Add Meal Option</button></li>
+						<li><button id = "updateMealBtn" class="button_1">Update Meal Options</button></li>
+						<li><button id = "deleteMealBtn" class="button_1">Delete Meal Options</button></li>
+						<li><a href="menu.html" style="text-align: center; color: #ffffff; background-color: #35424a; font-size: 10pt; border-radius: 4px; width: 58%;margin-bottom:5px; height: 38px ">Menu</a></li>
+						<li><a href="portal.html" style="text-align: center; color: #ffffff; background-color: #35424a; font-size: 10pt; border-radius: 4px; width: 58%; height: 38px; margin-bottom:5px">Portal</a></li>
+						<li><a href="udashboard.html" style="text-align: center; color: #ffffff; background-color: #35424a; font-size: 10pt; border-radius: 4px; width: 58%; height: 38px ">Customer Dash</a></li>
+					</ul>
+				</div>
+			</article>
+        </div><!--end container-->
+    </section><!--end main section -->
+	
+	
+	 <!-- The Add Meal Modal -->
+		<div id="addMealModal" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2 style="text-align: center">Add Meal </h2>
+				</div>
+				<div class="modal-body">
+					<div class="container dark">
+						<form action="">
+							<label for="mealName"> Meal Name</label>
+							<input type="text" id="mealName" name="mealName" placeholder="Enter meal">
+							<label for="mealCategory">Meal Category</label>
+							<select id="mealCategory" name="mealCategory">
+								<option value="breakfast">Breakfast</option>
+								<option value="lunch">Lunch</option>
+								<option value="dinner">Dinner</option>
+								<option value="supper">Desserts</option>
+							</select>
+							
+							<label for ="price"> Price</label>
+							<input type="text" id="price" name="price" placeholder="$12">
+							<label for ="imageUrl"> Image Url</label>
+							<input type="text" id="imageUrl" name="imageUrl" placeholder="https://www.myimages.com/thisone">
+							<label for="mealDecription"> Meal Description (Ingredients)</label>
+							<textarea id="mealDecription" name="mealDecription" style="font-family: Arial; color:#a1a4a8">Describe the meal in brief
+							</textarea>
+							<input type="submit" value="Add Meal">
+						</form><!--end registration form-->
+					</div><!--end form container-->
+				</div><!--end modal body-->
+				<div class="modal-footer"><br><br></div><!--end modal body-->
+			</div><!--end modal content-->
+		</div><!--end modal-->
+		
+		<!-- The Update Meal Modal -->
+		<div id="updateMealModal" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2 style="text-align: center">Update Meal</h2>
+				</div>
+				<div class="modal-body">
+					<div class="container dark">
+						<form action="">
+							<label for="selectMeal">Select Meal</label>
+							<select id="selectMeal" name="selectMeal">
+							    <option>Chicken Drumsticks</option>
+							    <option>Beef Stew</option>
+							    <option>Fried Fish</option>
+							    <option>Fried Liver (Dry)</option>
+							    <option>Fried Liver (Wet)</option>
+							</select>
+							<label for="updatemealName"> Update Meal Name</label>
+							<input type="text" id="updatemealName" name="updatemealName" placeholder="Enter new meal">
+							<label for="updatemealCategory">Update Meal Category</label>
+							<select id="updatemealCategory" name="updatemealCategory">
+							  <option value="breakfast">Breakfast</option>
+							  <option value="lunch">Lunch</option>
+							  <option value="dinner">Dinner</option>
+							  <option value="supper">Desserts</option>
+							</select>
+							<label for ="updatePrice"> Update Price</label>
+							<input type="text" id="updatePrice" name="updatePrice" placeholder="$930">
+							<label for ="updateImageUrl"> Update Image Url</label>
+							<input type="text" id="updateImageUrl" name="updateImageUrl" placeholder="https://www.myimages.com/thisone">
+							<label for="updateMealDecription"> Update Meal Description</label>
+							<textarea id="updateMealDecription" name="updateMealDecription" style="font-family: Arial; color:#a1a4a8">Decsribe the meal in brief
+							</textarea>
+							<input type="submit" value="Update Meal">
+						</form><!--end registration form-->
+					</div><!--end form container-->
+				</div><!--end modal body-->
+				<div class="modal-footer">
+				<br><br>
+				</div><!--end modal body-->
+			</div><!--end modal content-->
+		</div><!--end modal-->
+		
+		<!-- The Delete Meal Modal -->
+		<div id="deleteMealModal" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2 style="text-align: center">Delete Meal</h2>
+				</div>
+				<div class="modal-body">
+					<div class="container dark">
+						<form action="">
+							<label for="selectMeal">Select Meal</label>
+							<select id="selectMeal" name="selectMeal">
+							    <option>Chicken Drumsticks</option>
+							    <option>Beef Stew</option>
+							    <option>Fried Fish</option>
+							    <option>Fried Liver (Dry)</option>
+							    <option>Fried Liver (Wet)</option>
+							</select>
+							<input type="submit" value="Delete Meal">
+						</form><!--end registration form-->
+					</div><!--end form container-->
+				</div><!--end modal body-->
+				<div class="modal-footer">
+				<br><br>
+				</div><!--end modal body-->
+			</div><!--end modal content-->
+		</div><!--end modal-->
+	
+	
+
+    <footer>
+      <p>4fr0c0d3 Copyright &copy; 2018</p>
+    </footer>
+	<script>
+		// Get the modals
+		var modal = document.getElementById('addMealModal');
+		var modal2 = document.getElementById('updateMealModal');
+		var modal3 = document.getElementById('deleteMealModal');
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("addMealBtn");
+		var btn2 = document.getElementById("updateMealBtn");
+		var btn3 = document.getElementById("deleteMealBtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+		var span2 = document.getElementsByClassName("close")[0];
+		var span3 = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+		btn2.onclick = function() {
+			modal2.style.display = "block";
+		}
+		btn3.onclick = function() {
+			modal3.style.display = "block";
+		}
+		
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+		span2.onclick = function() {
+			modal2.style.display = "none";
+		}
+		span3.onclick = function() {
+			modal3.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal2.style.display = "none";
+			}
+		}
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal3.style.display = "none";
+			}
+		}
+
+	</script>
+	
+	
+</body>
+</html>

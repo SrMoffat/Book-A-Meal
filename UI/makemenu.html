@@ -1,0 +1,92 @@
+<!--makemenu.html-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Book meals and view daily offers">
+	<meta name="keywords" content="meals, book, book meals">
+  	<meta name="author" content="Ngige Gitau">
+    <title>Book-A-Meal | Daily Menu</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Book-A-</span> Meal</h1>
+        </div>
+        <nav>
+          <ul>
+			<li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="about.html">Settings</a></li>
+			<li><a href="index.html">Logout</a></li>
+          </ul>
+        </nav><!--end nav-->
+      </div><!--end branding container-->
+    </header>
+	
+    <section id="dash">
+        <div class="container dark" style = "border-radius: 4px;">
+			<h2> Add Daily Menu</h2><hr>
+			<div class="container dark">
+	  <div class="container">
+	   <div class="container">
+        <article id="main-col">
+			<form action="">
+							<label for="mealName"> Combo Name</label>
+							<input type="text" id="comboName" name="comboName" placeholder="Enter meal">
+							
+							<label for="mealCategory">Meal Category</label>
+							<select id="mealCategory" name="mealCategory">
+							  <option value="breakfast">Breakfast</option>
+							  <option value="brunch">Brunch</option>
+							  <option value="lunch">Lunch</option>
+							  <option value="dinner">Dinner</option>
+							  <option value="supper">Supper</option>
+							</select>
+							
+							<label for="meal">Meal Option</label>
+							<select id="meal" name="meal">
+							  <option>Chicken Drumsticks</option>
+							  <option>Chicken Burst</option>
+							  <option>Beef Fry (wet)</option>
+							  <option>Beef Fry (dry)</option>
+							  <option>Fried Liver</option>
+							</select>
+							
+							<label for="mealOptions">Accompaniment</label>
+							<select id="mealOptions" name="mealOptions">
+							  <option>Rice</option>
+							  <option>Spaghetti</option>
+							  <option>Ugali</option>
+							  <option>Fries</option>
+							  <option>Mashed Potatoes</option>
+							</select>
+							<label for ="price"> Price</label>
+							<input type="text" id="price" name="price" placeholder="$12">
+							
+							<input type="submit" value="Add Menu Option">
+						</form>
+        </article>
+		</div>
+		</div>
+      </div>
+	</section>
+			
+	
+	<section id="main">
+      <!--end container-->
+    </section><!--end main section -->
+	
+	
+	 
+	
+
+    <footer>
+      <p>4fr0c0d3 Copyright &copy; 2018</p>
+    </footer>
+	
+	
+  </body>
+</html>
