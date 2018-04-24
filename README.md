@@ -5,4 +5,13 @@ You can view the pages for the UI on the Github Pages site --> https://srmoffat.
 For the dashboard pages navigate to the Github Pages site --> https://srmoffat.github.io/Book-A-Meal/UI/dashboard.html
 
 # Homepage
-![Homepage Image](Admin.png)
+![Homepage Image](C:/Users/Admin/Desktop/Book-A-Meal/landing.png)
+
+# Dashboard
+![Dashboard Image](C:/Users/Admin/Desktop/Book-A-Meal/Admin.png)
+
+# Menu
+![Menu Image](C:/Users/Admin/Desktop/Book-A-Meal/menu.png)
+
+# Orders
+![Orders Image](C:/Users/Admin/Desktop/Book-A-Meal/orders.png)
