@@ -1,0 +1,165 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Book meals and view daily offers">
+	<meta name="keywords" content="meals, book, book meals">
+  	<meta name="author" content="Ngige Gitau">
+    <title>Book-A-Meal | Welcome!</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<!-- Navigation bar-->
+    <header>
+        <div class="container">
+            <div id="branding">
+				<h1><span class="highlight">Book-A-</span>Meal</h1>
+			</div>
+			<nav>
+			    <ul>
+					<li class="current"><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>            
+			    </ul>
+			</nav><!--end nav-->
+      </div><!--end branding container-->
+    </header><!--end header-->
+	
+	<!-- The showcase section with carousel-->
+    <section id="showcase">
+		<!-- Slideshow container -->
+		<div class="slideshow-container">
+		<!-- Full-width images with caption text -->
+		<div class="mySlides fade">
+			<img src="Food.jpg" style="width:100%; height:450px">
+		</div>
+
+		<div class="mySlides fade">
+			<img src="Food8.jpg" style="width:100%; height:450px">
+			<div class="text">Enjoy Desserts</div>
+		</div>
+
+		<div class="mySlides fade">
+			<img src="Food.jpg" style="width:100%; height:450px">
+		</div>
+
+		  <!-- Next and previous buttons -->
+		  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+		</div>
+    </section><!-- end the section with the carousel -->
+	
+	
+	<!-- The newsletter section with calls to action-->
+    <section id="newsletter">
+        <div class="container">       
+            <a href="#registerModal"><button class="button_1" id="registerBtn">Register</button></a>
+		<!-- The Register Modal -->
+		<div id="registerModal" class="modal">
+		<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close">&times;</span>
+					<h2 style = "text-align: center">Register</h2>
+				</div>
+				 <div class="modal-body">
+					<div class="container dark">
+						<form action="">
+							<label for="username"> Username</label>
+							<input type="text" id="username" name="username" placeholder="Enter username">
+							
+							<label for="email"> Email</label>
+							<input type="email" id="email" name="email" placeholder="Enter email">
+							
+							<label for="password"> Password</label>
+							<input type="password" id="password" name="password" placeholder="Enter password">
+
+							<label for="cpassword">Confirm Password</label>
+							<input type="password" id="cpassword" name="cpassword" placeholder="Confirm password">
+
+							<label for="account">Account Type</label>
+							<select id="account" name="account">
+							  <option value="caterer">Caterer</option>
+							  <option value="customer">Customer</option>
+							</select>
+							<input type="submit" value="Register">
+						</form><!--end registration form-->
+					</div><!--end form container-->
+				</div><!--end modal body-->
+				<div class="modal-footer"><br><br></div><!--end modal body-->
+			</div><!--end modal content-->
+		</div><!--end modal-->
+		  <a href="login.html"><button class="button_2" id="loginBtn">Log In</button></a>        
+      </div><!--end container-->
+    </section><!--end section-->
+
+    <section id="boxes">
+        <div class="container">
+            <div class="box">
+			    <img src="Avatar2.jpg">
+			    <h3>Manage Meal Options</h3>
+			    <p>Caterers can create meal options, update them  at will and delete them where need arises! </p>
+            </div><!--end box-->
+			<div class="box">
+			    <img src="Avatar2.jpg">
+			    <h3>Setup Daily Menus</h3>
+			    <p>Caterers can select from the created meal options the menus for the days, which are viewed by customers :-)</p>
+			</div><!--end box-->
+			<div class="box">
+			    <img src="Avatar2.jpg">
+			    <h3>View Order History</h3>
+			    <p>Cateres and customers can access the order history for pattern assessment.</p>
+			</div><!--end box-->
+      </div><!--end boxes container-->
+    </section><!--end boxes section-->
+
+    <footer>
+      <p>4fr0c0d3 Copyright &copy; 2018</p>
+    </footer><!--end footer-->
+	
+	
+		<script>
+		// Get the modal
+		var modal = document.getElementById('registerModal');
+
+		// Get the button that opens the modal
+		var btn = document.getElementById("registerBtn");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on the button, open the modal 
+		btn.onclick = function() {
+			modal.style.display = "block";
+		}
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1} 
+    slides[slideIndex-1].style.display = "block"; 
+    setTimeout(showSlides, 4000); // Change image every 2 seconds
+}		
+	</script>
+	
+</body>
+</html>

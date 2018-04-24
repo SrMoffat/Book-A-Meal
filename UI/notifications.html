@@ -1,0 +1,116 @@
+<!--makemenu.html-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Book meals and view daily offers">
+	<meta name="keywords" content="meals, book, book meals">
+  	<meta name="author" content="Ngige Gitau">
+    <title>Book-A-Meal | Notifications</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Book-A-</span> Meal</h1>
+        </div>
+        <nav>
+          <ul>
+			<li><a href="udashboard.html">Dashboard</a></li>
+			<li><a href="index.html">Logout</a></li>
+          </ul>
+        </nav><!--end nav-->
+      </div><!--end branding container-->
+    </header>
+	
+    <section id="dash">
+        <div class="container dark" style = "border-radius: 4px;">
+			<h1 style="text-align: center"> Notifications <span style="color:#e8491d ; font-size: 8pt" >1 new</span></h1><hr>
+			<div class="container">
+				<button class="accordion"><b>New Menu Release</b> <span style="color: #e8491d; font-size: 8pt"> new</span></button>
+				<div class="panel">
+				  <div style="color: black">
+					<p><b>Hey folks! A new menu has been set! Check it out</b> <a href="menu.html" style="color: #e8491d; text-decoration: none"> here</a></p>
+					<p style="font-size: 8pt"><b>22 Apr 2018</b> <span style="color: #e8491d; font-size: 8pt">1820hrs</span></p>
+				  </div><br>
+				</div>
+
+				<button class="accordion"><b>New Menu Release</b></button>
+				<div class="panel">				  
+				  <div style="color: black">
+				    <p><b>Hey folks! A new menu has been set! Check it out</b><a href="menu.html" style="color: #e8491d; text-decoration: none"> here</a></b></p>
+					<p style="font-size: 8pt"><b>22 Apr 2018</b> <span style="color: #e8491d; font-size: 8pt">1820hrs</span></p>
+					
+				  </div><br>
+				</div>
+
+								  </div><!--end div-->
+				</div><!--end panel-->
+				</div><!--end container-->
+		</div><!--end tabcontent container-->
+		
+			
+			
+			
+			</div>
+    </section><!--end main section -->
+	
+			
+      </div>
+	</section>
+			
+<script>
+
+		function openPage(pageName, elmnt, color) {
+    // Hide all elements with class="tabcontent" by default */
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Remove the background color of all tablinks/buttons
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+
+    // Show the specific tab content
+    document.getElementById(pageName).style.display = "block";
+
+    // Add the specific color to the button used to open the tab content
+    elmnt.style.backgroundColor = color;
+}
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+
+	</script>
+	
+
+
+	
+	 
+	
+
+    <footer>
+      <p>4fr0c0d3 Copyright &copy; 2018</p>
+    </footer>
+	
+	
+  </body>
+</html>
