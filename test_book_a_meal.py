@@ -31,6 +31,15 @@ class TestBookMeal(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertIn('chicken drumsticks', str(response.data))
 
+    def test_get_all_meals(self):
+        """Test that the API can get all the created meal options (GET/meals/) accessible by admin only
+        """
+        response = self.client.post('/meals/', data=self.meal)
+        self.assertEqual(response.status_code, 201)
+        response = self.client.get('/meals/')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('chicken drumsticks', str(response.data))
+
 
 if __name__ == '__main__':
     unittest.main()
