@@ -40,13 +40,15 @@ class TestBookMealAPI(unittest.TestCase):
                 "username": "customer",
                 "password": "customerpass"
             },
-            'meal': {"name": "chicken mamboleo",
+            'meal': {"id": "1",
+                     "name": "chicken mamboleo",
                      "category": "lunch",
                      "price": "$12.00",
                      "image_url": "www.images.com",
                      "description": "2 chicken drumsticks"
                      },
-            'new_meal': {"name": "chicken mamboleo",
+            'new_meal': {"id": "2",
+                         "name": "chicken mamboleo",
                          "category": "lunch",
                          "price": "$18.00",
                          "image_url": "www.images.com/1",
@@ -86,7 +88,7 @@ class TestBookMealAPI(unittest.TestCase):
         self.assertTrue('token' in response_data,
                         msg='No token included in the response')
 
-        # Buffer double entry
+        # Buffer double registration
         response = self.client.post('/api/v1/auth/signup', data=json.dumps(self.data['caterer']),
                                     content_type='application/json')
         self.assertEqual(response.status_code, 409)
@@ -146,7 +148,8 @@ class TestBookMealAPI(unittest.TestCase):
     def test_get_meal_by_id(self):
         """Test API endpoint can get a meal using meal_id property (GET /api/v1/meals/<int: meal_id>) only for admin
         """
-        response = self.client.get('/api/v1/meals/1')
+        response = self.client.get(
+            '/api/v1/meals/1', data=json.dumps(self.data['meal']))
 
         # Check Authorization
         self.assertEqual(response.status_code, 401)
@@ -154,7 +157,7 @@ class TestBookMealAPI(unittest.TestCase):
         # With Authorization
         response = self.client.get(
             '/api/v1/meals/1', headers=dict(Authorization='userpass' + self.token))
-        response_data = json.loads(response.data)['id']
+        response_data = json.loads(response.data)
         self.assertEqual(response.status_code, 200)
         self.assertIn('chicken', response_data)
 
@@ -225,8 +228,19 @@ class TestBookMealAPI(unittest.TestCase):
     def test_get_orders_endpoint(self):
         """Test API endpoint for getting all customer orders (GET/api/v1/orders/)
         """
+        # Check Authorization
         response = self.client.get('/api/v1/orders/')
+        self.assertEqual(response.status_code, 401)
+        # With Authorization
+        response = self.client.get(
+            '/api/v1/orders/', headers=dict(Authorization='userpas' + self.token))
         self.assertEqual(response.status_code, 200)
+
+    def tearDown(self):
+        # delete the --> self.app, --> self.client, and clear self.data and self.token 
+        pass
+        
+
 
 
 if __name__ == '__main__':
