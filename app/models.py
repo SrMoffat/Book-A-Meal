@@ -100,3 +100,40 @@ class Meal(object):
             },
             'order': 0
         }
+
+
+class Order(object):
+    """The model for the orders in the application
+    """
+    __CURSOR = 1
+
+    def __init__(self, meal: Meal, user: User, quantity=1):
+        """Construcor for the order with attributes and quantity default set to 1
+        """
+        self.id = Order.__CURSOR
+        self.meal = meal
+        self.owner = user
+        self.quantity = quantity
+        self.time_ordered = datetime.utcnow()
+
+        Order.__CURSOR += 1
+
+    def get_order_owner(self):
+        """Get the owner of an order
+        """
+        return self.owner
+
+    def increment_order_quantity(self, quantity=1):
+        """To change the order quantity incrementally by one 
+        """
+        self.quantity += quantity
+
+    def order_holder(self):
+        """The holder for the order details
+        """
+        return {
+            'id': self.id,
+            'owner': self.user.user_info(),
+            'quantity': self.quantity,
+            'time_placed': str(self.time_ordered)
+        }
