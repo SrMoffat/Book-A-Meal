@@ -137,3 +137,43 @@ class Order(object):
             'quantity': self.quantity,
             'time_placed': str(self.time_ordered)
         }
+
+
+mock_db = {
+    'users': [],  # User table
+    'meals': [],  # Meals table
+    'orders': [],  # Orders table
+}
+
+
+class MockDB(object):
+    """The model to querry the mock_db and its table
+    """
+    users = []
+    orders = []
+    meals = []
+    menu = []
+
+    @classmethod
+    def return_user(cls, username, password):
+        """Class method to query and return a user
+        """
+        for user in cls.users:
+            if user.username == username and user.verify_passwords(password):
+                return user
+
+    @classmethod
+    def return_user_by_name(cls, username):
+        """Class method to query users by name
+        """
+        for user in cls.users:
+            if username == user.username:
+                return user
+
+    @classmethod
+    def get_meals(cls, id):
+        """Class method to query for meals
+        """
+        for meal in cls.meals:
+            if meal.id = id:
+                return meal
