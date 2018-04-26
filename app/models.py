@@ -5,8 +5,9 @@ from flask import current_app
 from flask_jwt_extended import create_access_token
 from flask_restful import url_for
 
-STATUS = {
-    'cutomer': 1,
+CLEARANCE = {
+    'guest': 0,
+    'customer': 1,
     'caterer': 2,
     '4fr0c0d3': 3
 }
@@ -17,31 +18,31 @@ class User(object):
     """
     __CURSOR = 1
 
-    def __init__(self, username, email, password, status=STATUS['customer']):
-        """The constructor for an instance of a user with default status 'customer'
+    def __init__(self, username, password, email=None, clearance=CLEARANCE['customer']):
+        """The constructor for an instance of a user with default clearance 'customer'
         """
-        self.id = User.__CURSOR__
+        self.id = User.__CURSOR
         self.username = username
         self.email = email
         self.password_hash = generate_password_hash(password)
-        self.status = status
+        self.clearance = clearance
 
         User.__CURSOR += 1
 
-    def status_caterer(self):
-        """Return a user with the status 'caterer'
+    def clearance_caterer(self):
+        """Return a user with the clearance 'caterer'
         """
-        return self.status == STATUS['caterer']
+        return self.clearance_ == CLEARANCE['caterer']
 
-    def status_dev(self):
-        """Returns a user with status '4fr0c0d3' (super user)
+    def clearance_dev(self):
+        """Returns a user with clearance '4fr0c0d3' (super user)
         """
-        return self.status == STATUS['4fr0c0d3']
+        return self.clearance == CLEARANCE['4fr0c0d3']
 
-    def clearance(self, clearance_level):
+    def access_level(self, clearance_level):
         """Sets a cap for the access priviledge
         """
-        return self.role >= clearance_level
+        return self.clearance >= clearance_level
 
     def verify_passwords(self, password):
         """Confirm that the passwords' hash values match
@@ -60,7 +61,7 @@ class User(object):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'status': self.status
+            'clearance': self.clearance
         }
         return user_holder
 
@@ -175,5 +176,5 @@ class MockDB(object):
         """Class method to query for meals
         """
         for meal in cls.meals:
-            if meal.id = id:
+            if meal.id == id:
                 return meal

@@ -4,6 +4,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+app/__pycache__/__init__.cpython-36.pyc
+instance/__pycache__/config.cpython-36.pyc
 
 # C extensions
 *.so

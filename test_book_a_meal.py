@@ -1,7 +1,7 @@
 import os
 import unittest
 import json
-from app import create_app, db
+from app import create_app
 
 
 class TestBookMealAPI(unittest.TestCase):
@@ -237,10 +237,8 @@ class TestBookMealAPI(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def tearDown(self):
-        # delete the --> self.app, --> self.client, and clear self.data and self.token 
+        # delete the --> self.app, --> self.client, and clear self.data and self.token
         pass
-        
-
 
 
 if __name__ == '__main__':
