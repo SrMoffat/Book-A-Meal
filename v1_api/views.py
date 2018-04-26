@@ -151,3 +151,18 @@ class MenuLog(Resource):
                 'message': 'Daily menu succesfully created!',
                 'meals': [meal.meal_holder() for meal in menu_elements]
                 }, 201
+
+
+class OrderLog(Resource):
+    """The Order Item resource in the API
+    """
+    @jwt_required
+    @clearance_required(2)
+    def get(self):
+        """GET all orders in the API
+        """
+        order_response = {
+            'orders': [order.order_holder() for order in MockDB.orders]
+        }
+        return order_response, 200
+    
