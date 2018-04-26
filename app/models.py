@@ -1,37 +1,67 @@
-from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
+import uuid
+from datetime import datetime
+from flask import current_app
+from flask_jwt_extended import create_access_token
+from flask_restful import url_for
+
+STATUS = {
+    'cutomer': 1,
+    'caterer': 2,
+    '4fr0c0d3': 3
+}
 
 
-class Meal(db.Model):
+class User(object):
+    """The model for the users in the app
     """
-    This class represents the table for meals
-    """
-    __tablename__ = 'meals'
+    __CURSOR__ = 1
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(
-        db.DateTime, default=db.func.current_timestamp(),
-        onupdate=db.func.current_timestamp()
-    )
-
-    def __init__(self, name):
+    def __init__(self, username, email, password, status=STATUS['customer']):
+        """The constructor for an instance of a user with default status 'customer'
         """
-        Initializes with a name
+        self.id = User.__CURSOR__
+        self.username = username
+        self.email = email
+        self.password_hash = generate_password_hash(password)
+        self.status = status
+
+        User.__CURSOR__ += 1
+
+    def status_caterer(self):
+        """Return a user with the status 'caterer'
         """
-        self.name = name
+        return self.status == STATUS['caterer']
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+    def status_dev(self):
+        """Returns a user with status '4fr0c0d3' (super user)
+        """
+        return self.status == STATUS['4fr0c0d3']
 
-    @staticmethod
-    def get_all():
-        return Meal.query.all()
+    def clearance(self, clearance_level):
+        """Sets a cap for the access priviledge
+        """
+        return self.role >= clearance_level
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+    def verify_passwords(self, password):
+        """Confirm that the passwords' hash values match
+        """
+        return check_password_hash(self.password_hash, password)
 
-    def __repr__(self):
-        return 'Meal: {}>'.format(self.name)
+    def generate_token(self):
+        """Generate the access token for the users
+        """
+        return create_access_token(identity=self.username)
+
+    def user_info(self):
+        """Holder for the user and their information
+        """
+        user_holder = {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'status': self.status
+        }
+        return user_holder
+
+    
