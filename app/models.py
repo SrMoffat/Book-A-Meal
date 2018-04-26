@@ -32,7 +32,7 @@ class User(object):
     def clearance_caterer(self):
         """Return a user with the clearance 'caterer'
         """
-        return self.clearance_ == CLEARANCE['caterer']
+        return self.clearance == CLEARANCE['caterer']
 
     def clearance_dev(self):
         """Returns a user with clearance '4fr0c0d3' (super user)
@@ -74,7 +74,7 @@ class Meal(object):
     def __init__(self, name, category, price, image_url, description, caterer: User):
         """Constructor for the meal with attributes and owner 'caterer'
         """
-        self.id = Meal.__CURSOR__
+        self.id = Meal.__CURSOR
         self.name = name
         self. category = category
         self.price = int(price)
