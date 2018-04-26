@@ -31,7 +31,7 @@ class Meal(Resource):
 
     @jwt_required
     @clearance_required(2)
-    def get_meal(self, meal_id):
+    def get(self, meal_id):
         """Gets a single meal querying by id
         """
         meal = MockDB.get_meals(meal_id)
@@ -41,7 +41,7 @@ class Meal(Resource):
 
     @jwt_required
     @clearance_required(2)
-    def update_meal(self, meal_id):
+    def put(self, meal_id):
         """Updates the meal with the meal_id provided
         """
         meal = MockDB.get_meals(meal_id)
@@ -68,7 +68,7 @@ class Meal(Resource):
 
     @jwt_required
     @clearance_required(2)
-    def delete_meal(self, meal_id):
+    def delete(self, meal_id):
         """Deletes a meal given its meal_id
         """
         meal = MockDB.get_meals(meal_id)
@@ -78,3 +78,19 @@ class Meal(Resource):
         return {'status': 200,
                 'message': 'Meal option has been succesfully removed!'
                 }, 200
+
+
+class Menu(Resource):
+    """The Menu resource entity for the API
+    """
+    @jwt_required
+    @clearance_required(2)
+    def get(self):
+        """GET the menu item in the API
+        """"
+        meals = {
+            'meals': [meal.meal_holder() for meal in MockDB.meals],
+            'num_of_meals': len(MockDB.meals),
+            'order': 0
+        }
+        return meals, 200
