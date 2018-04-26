@@ -65,3 +65,16 @@ class Meal(Resource):
                 'status': '200',
                 'message': 'Meal option succesfully updated!'
                 }, 200
+
+    @jwt_required
+    @clearance_required(2)
+    def delete_meal(self, meal_id):
+        """Deletes a meal given its meal_id
+        """
+        meal = MockDB.get_meals(meal_id)
+        if not meal:
+            return abort(404)
+        MockDB.meals.remove(meal)
+        return {'status': 200,
+                'message': 'Meal option has been succesfully removed!'
+                }, 200
