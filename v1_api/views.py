@@ -87,7 +87,7 @@ class Menu(Resource):
     @clearance_required(2)
     def get(self):
         """GET the menu item in the API
-        """"
+        """
         meals = {
             'meals': [meal.meal_holder() for meal in MockDB.meals],
             'num_of_meals': len(MockDB.meals),
