@@ -80,8 +80,8 @@ class Meal(Resource):
                 }, 200
 
 
-class MenuItems(Resource):
-    """The Menu resource entity for the API
+class MealLog(Resource):
+    """The Meal Item resource entity for the API
     """
     @jwt_required
     @clearance_required(2)
@@ -96,7 +96,7 @@ class MenuItems(Resource):
         return meals, 200
 
     def post(self):
-        """CREATE menu item menu in the API
+        """CREATE meal item in the API
         """
         name = request.json.get('name', None)
         category = request.json.get('category', None)
@@ -113,3 +113,18 @@ class MenuItems(Resource):
                 'id': meal.id,
                 'message': 'Meal option succesfully added!'
                 }, 201
+
+
+class MenuLog(Resource):
+    """The Menu Item resource in the API
+    """
+    @jwt_required
+    @clearance_required(1)
+    def get(self):
+        """GET the menu items
+        """
+
+        menu_response = {'meals': [meal.meal_holder() for meal in MockDB.menu],
+                         'day': None
+                         }
+        return menu_response, 200
