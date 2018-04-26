@@ -165,4 +165,34 @@ class OrderLog(Resource):
             'orders': [order.order_holder() for order in MockDB.orders]
         }
         return order_response, 200
-    
+
+    @jwt_required
+    @clearance_required(1)
+    def post(self):
+        """CREATE an order in the API
+        """
+        order_request = request.json.get('orders')
+        orders = []
+
+        for order in order_request:
+            meal_item = order.get('meal_id')
+            quantity = order['quantity']
+
+            for meal in MockDB.menu:
+                if meal_item == meal.id:
+                    order = Order(meal, current_user, quantity)
+                    orders.append(order)
+
+        # Check scope
+        if len(orders) != len(order_request):
+            return {'status': 404,
+                    'message': 'Order not found in menu!'
+                    }, 404
+        # Add to MockDB
+        for order in orders:
+            MockDB.orders.append(order)
+
+        return {'status': 201,
+                'message': 'Your order has been successully placed!',
+                'orders': [order.order_holder() for order in orders]
+                }, 201
