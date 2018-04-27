@@ -24,13 +24,13 @@ class TestBookMealAPI(unittest.TestCase):
                 "username": "caterer",
                 "email": "caterer@mail.com",
                 "password": "catererpass",
-                "status": "1"
+                "clearance": "1"
             },
             'customer': {
                 "username": "customer",
                 "email": "customer@mail.com",
                 "password": "customerpass",
-                "status": "0"
+                "clearance": "0"
             },
             'admin': {
                 "username": "caterer",

@@ -31,7 +31,7 @@ class Meal(Resource):
 
     @jwt_required
     @clearance_required(2)
-    def get_meal(self, meal_id):
+    def get(self, meal_id):
         """Gets a single meal querying by id
         """
         meal = MockDB.get_meals(meal_id)
@@ -41,7 +41,7 @@ class Meal(Resource):
 
     @jwt_required
     @clearance_required(2)
-    def update_meal(self, meal_id):
+    def put(self, meal_id):
         """Updates the meal with the meal_id provided
         """
         meal = MockDB.get_meals(meal_id)
@@ -68,7 +68,7 @@ class Meal(Resource):
 
     @jwt_required
     @clearance_required(2)
-    def delete_meal(self, meal_id):
+    def delete(self, meal_id):
         """Deletes a meal given its meal_id
         """
         meal = MockDB.get_meals(meal_id)
@@ -78,3 +78,53 @@ class Meal(Resource):
         return {'status': 200,
                 'message': 'Meal option has been succesfully removed!'
                 }, 200
+
+
+class MealLog(Resource):
+    """The Meal Item resource entity for the API
+    """
+    @jwt_required
+    @clearance_required(2)
+    def get(self):
+        """GET the menu item in the API
+        """
+        meals = {
+            'meals': [meal.meal_holder() for meal in MockDB.meals],
+            'num_of_meals': len(MockDB.meals),
+            'order': 0
+        }
+        return meals, 200
+
+    def post(self):
+        """CREATE meal item in the API
+        """
+        name = request.json.get('name', None)
+        category = request.json.get('category', None)
+        price = request.json.get('price', None)
+        image_url = request.json.get('image_url', None)
+        description = request.json.get('description', None)
+        meal = Meal(name=name,
+                    category=category,
+                    price=price,
+                    image_url=image_url,
+                    description=description)
+        MockDB.meals.append(meal)
+        return {'status': 201,
+                'id': meal.id,
+                'message': 'Meal option succesfully added!'
+                }, 201
+
+
+class MenuLog(Resource):
+    """The Menu Item resource in the API
+    """
+    @jwt_required
+    @clearance_required(1)
+    def get(self):
+        """GET the menu items
+        """
+
+        menu_response = {'meals': [meal.meal_holder() for meal in MockDB.menu],
+                         'day': None
+                         }
+        return menu_response, 200
