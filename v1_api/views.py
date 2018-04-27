@@ -103,11 +103,7 @@ class MealLog(Resource):
         price = request.json.get('price', None)
         image_url = request.json.get('image_url', None)
         description = request.json.get('description', None)
-        meal = Meal(name=name,
-                    category=category,
-                    price=price,
-                    image_url=image_url,
-                    description=description)
+        meal = Meal(name, category, price, image_url, description)
         MockDB.meals.append(meal)
         return {'status': 201,
                 'id': meal.id,
