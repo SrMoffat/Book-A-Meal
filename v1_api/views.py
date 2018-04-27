@@ -128,3 +128,41 @@ class MenuLog(Resource):
                          'day': None
                          }
         return menu_response, 200
+
+    @jwt_required
+    @clearance_required(2)
+    def post(self):
+        """CREATE the daily menu in the API
+        """
+        meals = request.json.get('meals', None)
+        menu_elements = []
+
+        for meal_id in meals:
+            meal = MockDB.get_meals(meal_id)
+            if not meal:
+                return {'status': 404,
+                        'message': 'No meal wwas found!',
+                        'meal_id': meal_id
+                        }, 404
+            menu_elements.append(meal)
+            for meal in menu_elements:
+                MockDB.menu.append(meal)
+        return {'status': 201,
+                'message': 'Daily menu succesfully created!',
+                'meals': [meal.meal_holder() for meal in menu_elements]
+                }, 201
+
+
+class OrderLog(Resource):
+    """The Order Item resource in the API
+    """
+    @jwt_required
+    @clearance_required(2)
+    def get(self):
+        """GET all orders in the API
+        """
+        order_response = {
+            'orders': [order.order_holder() for order in MockDB.orders]
+        }
+        return order_response, 200
+    
