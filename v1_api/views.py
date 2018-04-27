@@ -3,7 +3,7 @@
 from flask import jsonify, make_response, abort, request
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required, current_user
-from app.models import Meal, MockDB, Order
+from app.models import Meal as MealHan, MockDB, Order
 
 from functools import wraps
 
@@ -31,7 +31,7 @@ class Meal(Resource):
 
     @jwt_required
     @clearance_required(2)
-    def get_meal(self, meal_id):
+    def get(self, meal_id):
         """Gets a single meal querying by id
         """
         meal = MockDB.get_meals(meal_id)
@@ -41,7 +41,7 @@ class Meal(Resource):
 
     @jwt_required
     @clearance_required(2)
-    def update_meal(self, meal_id):
+    def put(self, meal_id):
         """Updates the meal with the meal_id provided
         """
         meal = MockDB.get_meals(meal_id)
@@ -64,4 +64,175 @@ class Meal(Resource):
         return {'id': meal_id,
                 'status': '200',
                 'message': 'Meal option succesfully updated!'
+                }, 200
+
+    @jwt_required
+    @clearance_required(2)
+    def delete(self, meal_id):
+        """Deletes a meal given its meal_id
+        """
+        meal = MockDB.get_meals(meal_id)
+        if not meal:
+            return abort(404)
+        MockDB.meals.remove(meal)
+        return {'status': 200,
+                'message': 'Meal option has been succesfully removed!'
+                }, 200
+
+
+class MealLog(Resource):
+    """The Meal Item resource entity for the API
+    """
+    @jwt_required
+    @clearance_required(2)
+    def get(self):
+        """GET the menu item in the API
+        """
+        meals = {
+            'meals': [meal.meal_holder() for meal in MockDB.meals],
+            'num_of_meals': len(MockDB.meals),
+            'order': 0
+        }
+        return meals, 200
+
+    def post(self):
+        """CREATE meal item in the API
+        """
+        name = request.json.get('name', None)
+        category = request.json.get('category', None)
+        price = request.json.get('price', None)
+        image_url = request.json.get('image_url', None)
+        description = request.json.get('description', None)
+        meal = MealHan(name=name,
+                       category=category,
+                       price=price,
+                       image_url=image_url,
+                       description=description,
+                       caterer=current_user)
+        MockDB.meals.append(meal)
+        return {'status': 201,
+                'id': meal.id,
+                'message': 'Meal option succesfully added!'
+                }, 201
+
+
+class MenuLog(Resource):
+    """The Menu Item resource in the API
+    """
+    @jwt_required
+    @clearance_required(1)
+    def get(self):
+        """GET the menu items
+        """
+
+        menu_response = {'meals': [meal.meal_holder() for meal in MockDB.menu],
+                         'day': None
+                         }
+        return menu_response, 200
+
+    @jwt_required
+    @clearance_required(2)
+    def post(self):
+        """CREATE the daily menu in the API
+        """
+        meals = request.json.get('meals', None)
+        menu_elements = []
+
+        for meal_id in meals:
+            meal = MockDB.get_meals(meal_id)
+            if not meal:
+                return {'status': 404,
+                        'message': 'No meal wwas found!',
+                        'meal_id': meal_id
+                        }, 404
+            menu_elements.append(meal)
+            for meal in menu_elements:
+                MockDB.menu.append(meal)
+        return {'status': 201,
+                'message': 'Daily menu succesfully created!',
+                'meals': [meal.meal_holder() for meal in menu_elements]
+                }, 201
+
+
+class OrderLog(Resource):
+    """The Order Item resource in the API
+    """
+    @jwt_required
+    @clearance_required(2)
+    def get(self):
+        """GET all orders in the API
+        """
+        order_response = {
+            'orders': [order.order_holder() for order in MockDB.orders]
+        }
+        return order_response, 200
+
+    @jwt_required
+    @clearance_required(1)
+    def post(self):
+        """CREATE an order in the API
+        """
+        order_request = request.json.get('orders')
+        orders = []
+
+        for order in order_request:
+            meal_item = order.get('meal_id')
+            quantity = order['quantity']
+
+            for meal in MockDB.menu:
+                if meal_item == meal.id:
+                    order = Order(meal, current_user, quantity)
+                    orders.append(order)
+
+        # Check scope
+        if len(orders) != len(order_request):
+            return {'status': 404,
+                    'message': 'Order not found in menu!'
+                    }, 404
+        # Add to MockDB
+        for order in orders:
+            MockDB.orders.append(order)
+
+        return {'status': 201,
+                'message': 'Your order has been successully placed!',
+                'orders': [order.order_holder() for order in orders]
+                }, 201
+
+
+class OrderResource (Resource):
+    """The Order resource for the API
+    """
+    @jwt_required
+    @clearance_required(1)
+    def get(self):
+        """GET order by id
+        """
+        order = MockDB.get_order(id)
+        return order, 200
+
+    @jwt_required
+    @clearance_required(1)
+    def put(self):
+        """UPADATE order
+        """
+        order = MockDB.get_order(id)
+        if not order:
+            return abort(404)
+
+        MockDB.orders.remove(order)
+
+        meal_id = request.json.get('meal_id', None)
+        quantity = request.json.get('quantity', None)
+
+        if meal_id:
+            meal = MockDB.get_meals(id)
+            order.meal = meal
+        if quantity:
+            order.quantity = quantity
+
+        MockDB.orders.append(order)
+
+        return {'status': 200,
+                'message': 'Order has been successfully updated!',
+                'id': order.id
                 }, 200

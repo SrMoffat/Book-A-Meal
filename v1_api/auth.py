@@ -24,12 +24,13 @@ class Register(Resource):
         for person in MockDB.users:
             if username == person.username:
                 return {'status': 409,
-                        'message': 'Username already exists!'}
+                        'message': 'Username already exists!'}, 409
+
         # enforce password requirement
         if not password:
             return {'status': 422,
                     'message': 'Provide password!'
-                    }
+                    }, 422
         # Once validated, create user
         MockDB.users.append(new_user)
 
