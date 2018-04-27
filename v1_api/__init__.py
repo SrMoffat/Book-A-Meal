@@ -10,4 +10,4 @@ api = Api(api_arch)
 
 api.add_resource(Register, '/auth/signup')
 api.add_resource(Login, '/auth/login')
-api.add_resource(Meal, '/meals/')
+api.add_resource(MealItems, '/meals/')

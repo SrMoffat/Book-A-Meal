@@ -80,7 +80,7 @@ class Meal(Resource):
                 }, 200
 
 
-class Menu(Resource):
+class MenuItems(Resource):
     """The Menu resource entity for the API
     """
     @jwt_required
@@ -94,3 +94,22 @@ class Menu(Resource):
             'order': 0
         }
         return meals, 200
+
+    def post(self):
+        """CREATE menu item menu in the API
+        """
+        name = request.json.get('name', None)
+        category = request.json.get('category', None)
+        price = request.json.get('price', None)
+        image_url = request.json.get('image_url', None)
+        description = request.json.get('description', None)
+        meal = Meal(name=name,
+                    category=category,
+                    price=price,
+                    image_url=image_url,
+                    description=description)
+        MockDB.meals.append(meal)
+        return {'status': 201,
+                'id': meal.id,
+                'message': 'Meal option succesfully added!'
+                }, 201
