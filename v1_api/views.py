@@ -103,11 +103,7 @@ class MealLog(Resource):
         price = request.json.get('price', None)
         image_url = request.json.get('image_url', None)
         description = request.json.get('description', None)
-        meal = Meal(name=name,
-                    category=category,
-                    price=price,
-                    image_url=image_url,
-                    description=description)
+        meal = Meal(name, category, price, image_url, description)
         MockDB.meals.append(meal)
         return {'status': 201,
                 'id': meal.id,
@@ -196,3 +192,42 @@ class OrderLog(Resource):
                 'message': 'Your order has been successully placed!',
                 'orders': [order.order_holder() for order in orders]
                 }, 201
+
+
+class OrderResource (Resource):
+    """The Order resource for the API
+    """
+    @jwt_required
+    @clearance_required(1)
+    def get(self):
+        """GET order by id
+        """
+        order = MockDB.get_order(id)
+        return order, 200
+
+    @jwt_required
+    @clearance_required(1)
+    def put(self):
+        """UPADATE order
+        """
+        order = MockDB.get_order(id)
+        if not order:
+            return abort(404)
+
+        MockDB.orders.remove(order)
+
+        meal_id = request.json.get('meal_id', None)
+        quantity = request.json.get('quantity', None)
+
+        if meal_id:
+            meal = MockDB.get_meals(id)
+            order.meal = meal
+        if quantity:
+            order.quantity = quantity
+
+        MockDB.orders.append(order)
+
+        return {'status': 200,
+                'message': 'Order has been successfully updated!',
+                'id': order.id
+                }, 200

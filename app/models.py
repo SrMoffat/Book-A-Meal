@@ -178,3 +178,15 @@ class MockDB(object):
         for meal in cls.meals:
             if meal.id == id:
                 return meal
+
+    @classmethod
+    def get_menu_meals(cls, id):
+        for meal in cls.menu:
+            if meal.id == id:
+                return meal
+
+    @classmethod
+    def get_order(cls, id):
+        for order in cls.orders:
+            if order.id == id:
+                return order
