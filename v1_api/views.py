@@ -3,7 +3,7 @@
 from flask import jsonify, make_response, abort, request
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required, current_user
-from app.models import Meal, MockDB, Order
+from app.models import Meal as MealHan, MockDB, Order
 
 from functools import wraps
 
@@ -103,7 +103,12 @@ class MealLog(Resource):
         price = request.json.get('price', None)
         image_url = request.json.get('image_url', None)
         description = request.json.get('description', None)
-        meal = Meal(name, category, price, image_url, description)
+        meal = MealHan(name=name,
+                       category=category,
+                       price=price,
+                       image_url=image_url,
+                       description=description,
+                       caterer=current_user)
         MockDB.meals.append(meal)
         return {'status': 201,
                 'id': meal.id,
