@@ -1,14 +1,19 @@
+"""
+--- The Entry Point File for the App ---
+            Author: Ngige Gitau 
+            For:    Book-A-Meal API 
+                    2018       
+"""
+
 from flask import Flask
 from flask_jwt_extended import JWTManager
 from instance.config import app_config
 from .models import User, MockDB
 
-from flask_sqlalchemy import SQLAlchemy
-
 
 jwt = JWTManager()
 
-# enforece token-based authentication with decorator
+# enforce token-based authentication with decorator
 
 
 @jwt.user_loader_callback_loader

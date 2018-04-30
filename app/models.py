@@ -34,11 +34,6 @@ class User(object):
         """
         return self.clearance == CLEARANCE['caterer']
 
-    def clearance_dev(self):
-        """Returns a user with clearance '4fr0c0d3' (super user)
-        """
-        return self.clearance == CLEARANCE['4fr0c0d3']
-
     def access_level(self, clearance_level):
         """Sets a cap for the access priviledge
         """
@@ -61,7 +56,7 @@ class User(object):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'clearance': self.clearance
+            'clearance': self.clearance_caterer()
         }
         return user_holder
 
@@ -115,7 +110,7 @@ class Order(object):
         self.meal = meal
         self.owner = user
         self.quantity = quantity
-        self.time_ordered = datetime.utcnow()
+        self.time_ordered = datetime.datetime.utcnow()
 
         Order.__CURSOR += 1
 
@@ -134,7 +129,7 @@ class Order(object):
         """
         return {
             'id': self.id,
-            'owner': self.user.user_info(),
+            'owner': self.owner.user_info(),
             'quantity': self.quantity,
             'time_placed': str(self.time_ordered)
         }

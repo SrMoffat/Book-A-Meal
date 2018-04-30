@@ -17,7 +17,7 @@ def clearance_required(access_level):
             if not current_user:
                 return make_response(jsonify({"message": "Unauthorized!",
                                               "status": 401}), 401)
-            if not current_user.allowed_level(access_level):
+            if not current_user.access_level(2):
                 return make_response(jsonify({"message": "Your clearance level is lower than required!",
                                               "status": 401}), 401)
             return f(*args, **kwargs)
@@ -49,6 +49,7 @@ class Meal(Resource):
             return abort(404)
         name = request.json.get('name', None)
         price = request.json.get('price', None)
+        description = request.json.get('description', None)
         image_url = request.json.get('image_url', None)
 
         MockDB.meals.remove(meal)
@@ -57,6 +58,8 @@ class Meal(Resource):
             meal.name = name
         if price:
             meal.price = price
+        if description:
+            meal.description = description
         if image_url:
             meal.image_url = image_url
 
@@ -90,8 +93,7 @@ class MealLog(Resource):
         """
         meals = {
             'meals': [meal.meal_holder() for meal in MockDB.meals],
-            'num_of_meals': len(MockDB.meals),
-            'order': 0
+            'num_of_meals': len(MockDB.meals)
         }
         return meals, 200
 
@@ -109,6 +111,7 @@ class MealLog(Resource):
                        image_url=image_url,
                        description=description,
                        caterer=current_user)
+
         MockDB.meals.append(meal)
         return {'status': 201,
                 'id': meal.id,
@@ -138,11 +141,13 @@ class MenuLog(Resource):
         meals = request.json.get('meals', None)
         menu_elements = []
 
-        for meal_id in meals:
-            meal = MockDB.get_meals(meal_id)
+        for meal in meals:
+            # import pdb
+            # pdb.set_trace()
+            meal = MockDB.get_meals(meal.id)
             if not meal:
                 return {'status': 404,
-                        'message': 'No meal wwas found!',
+                        'message': 'No meal was found!',
                         'meal_id': meal_id
                         }, 404
             menu_elements.append(meal)
