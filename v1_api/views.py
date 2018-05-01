@@ -97,6 +97,8 @@ class MealLog(Resource):
         }
         return meals, 200
 
+    @jwt_required
+    @clearance_required(2)
     def post(self):
         """CREATE meal item in the API
         """

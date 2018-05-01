@@ -136,9 +136,11 @@ class TestUserAuthentication(unittest.TestCase):
 
         self.assertTrue(response.status_code, 401)
 
+    # 4. Test password provision
     def test_must_provide_password(self):
         """  Ensure user registration demands for a password 
         """
+
         uri = "/api/v1/auth/signup"
         data = {
             "username": "maryjane",
@@ -167,6 +169,37 @@ class TestUserAuthentication(unittest.TestCase):
                                  content_type='application/json')
 
         self.assertTrue(response.status_code, 400)
+
+    # 5. Test user clearance level
+    def test_user_clearance_level(self):
+        """ Test the user clearance level
+        """
+        uri = "/api/v1/auth/signup"
+        # Basic user tries level 2 access
+        data = {
+            "username": "tester",
+            "email": "tester@mail.com",
+            "password": "testerpassword",
+            "clearance": 1
+        }
+        response = self.app.post(uri,
+                                 data=json.dumps(data),
+                                 content_type='application/json')
+        self.assertEqual(response.status_code, 201)
+        token = json.loads(response.data).get('token')
+        uri = "/api/v1/meals/"
+        meal = {
+            "name": "tester meal",
+            "category": "breakfast",
+            "price": 6.00,
+            "image_url": "www.images.com",
+            "description": "Tester description here"
+        }
+        response = self.app.post(uri,
+                                 data=json.dumps(meal),
+                                 content_type="application/json",
+                                 headers=dict(Authorization="Bearer " + token))
+        self.assertEqual(response.status_code, 401)
 
     def tearDown(self):
 
