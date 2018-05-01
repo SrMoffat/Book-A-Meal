@@ -8,6 +8,8 @@ class Register(Resource):
     """
 
     def post(self):
+        """Create a new user
+        """
         # get post data
         username = request.json['username']
         email = None
@@ -21,8 +23,8 @@ class Register(Resource):
         new_user = User(username, password, email=email, clearance=clearance)
 
         # buffer double entry
-        for person in MockDB.users:
-            if username == person.username:
+        for user in MockDB.users:
+            if user.username == new_user.username:
                 return {'status': 409,
                         'message': 'Username already exists!'}, 409
 
@@ -61,8 +63,8 @@ class Login(Resource):
         # if username and password provided, query for the user
         user = MockDB.return_user(username, password)
 
-        # Raise error if user not in db
-        if user == None:
+        # Raise error if user not in MockDB
+        if not user:
             return {'status': 400,
                     'message': 'Invalid credentials!'
                     }, 400
