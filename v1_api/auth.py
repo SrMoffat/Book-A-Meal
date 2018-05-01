@@ -15,7 +15,15 @@ class Register(Resource):
         email = None
         if 'email' in request.json:
             email = request.json['email']
-        password = request.json['password']
+        if 'password' not in request.json:
+
+            return {'status': 422,
+                    'message': 'Provide password!'
+                    }, 422
+
+        else:
+            password = request.json['password']
+
         clearance = request.json.get('clearance', None)
         if clearance == None:
             clearance = 1
@@ -28,11 +36,6 @@ class Register(Resource):
                 return {'status': 409,
                         'message': 'Username already exists!'}, 409
 
-        # enforce password requirement
-        if not password:
-            return {'status': 422,
-                    'message': 'Provide password!'
-                    }, 422
         # Once validated, create user
         MockDB.users.append(new_user)
 

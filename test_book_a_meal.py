@@ -136,6 +136,38 @@ class TestUserAuthentication(unittest.TestCase):
 
         self.assertTrue(response.status_code, 401)
 
+    def test_must_provide_password(self):
+        """  Ensure user registration demands for a password 
+        """
+        uri = "/api/v1/auth/signup"
+        data = {
+            "username": "maryjane",
+            "email": "maryjane@mail.com",
+            "clearance": 2
+        }
+        response = self.app.post(uri,
+                                 data=json.dumps(data),
+                                 content_type='application/json')
+        self.assertTrue(response.status_code, 422)
+
+        uri = "/api/v1/auth/login"
+        data = {
+            "username": "johndoe"
+        }
+        response = self.app.post(uri,
+                                 data=json.dumps(data),
+                                 content_type='application/json')
+        self.assertTrue(response.status_code, 400)
+
+        data = {
+            "password": "johndoepass"
+        }
+        response = self.app.post(uri,
+                                 data=json.dumps(data),
+                                 content_type='application/json')
+
+        self.assertTrue(response.status_code, 400)
+
     def tearDown(self):
 
         pass
