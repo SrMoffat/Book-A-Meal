@@ -3,7 +3,7 @@
 from flask import jsonify, make_response, abort, request
 from flask_restful import Resource
 from flask_jwt_extended import jwt_required, current_user
-from app.models import Meal as MealHan, MockDB, Order
+from app.models import MockDB, Order, Meal as MealHan
 
 from functools import wraps
 
@@ -97,6 +97,8 @@ class MealLog(Resource):
         }
         return meals, 200
 
+    @jwt_required
+    @clearance_required(2)
     def post(self):
         """CREATE meal item in the API
         """
@@ -142,20 +144,19 @@ class MenuLog(Resource):
         menu_elements = []
 
         for meal in meals:
-            # import pdb
-            # pdb.set_trace()
-            meal = MockDB.get_meals(meal.id)
             if not meal:
                 return {'status': 404,
                         'message': 'No meal was found!',
                         'meal_id': meal_id
                         }, 404
+
             menu_elements.append(meal)
             for meal in menu_elements:
                 MockDB.menu.append(meal)
+
         return {'status': 201,
                 'message': 'Daily menu succesfully created!',
-                'meals': [meal.meal_holder() for meal in menu_elements]
+                'meals': [MockDB.get_menu_meals(meal) for meal in menu_elements]
                 }, 201
 
 
@@ -183,9 +184,11 @@ class OrderLog(Resource):
         for order in order_request:
             meal_item = order.get('meal_id')
             quantity = order['quantity']
+            # import pdb
+            # pdb.set_trace()
 
             for meal in MockDB.menu:
-                if meal_item == meal.id:
+                if meal_item == MockDB.meals[0]['id']:
                     order = Order(meal, current_user, quantity)
                     orders.append(order)
 

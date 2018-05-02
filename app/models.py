@@ -71,7 +71,7 @@ class Meal(object):
         """
         self.id = Meal.__CURSOR
         self.name = name
-        self. category = category
+        self.category = category
         self.price = int(price)
         self.image_url = image_url
         self.description = description
@@ -86,14 +86,12 @@ class Meal(object):
         return {
             'id': self.id,
             'owner': self.caterer.id,
-            'meal': {
-                'name': self.name,
-                'category': self.category,
-                'price': self.price,
-                'image_url': self.image_url,
-                'description': self.description,
-                'date_posted': str(self.date_posted)
-            },
+            'name': self.name,
+            'category': self.category,
+            'price': self.price,
+            'image_url': self.image_url,
+            'description': self.description,
+            'date_posted': str(self.date_posted),
             'order': 0
         }
 
@@ -110,7 +108,7 @@ class Order(object):
         self.meal = meal
         self.owner = user
         self.quantity = quantity
-        self.time_ordered = datetime.datetime.utcnow()
+        self.time_ordered = datetime.utcnow()
 
         Order.__CURSOR += 1
 
@@ -176,12 +174,13 @@ class MockDB(object):
 
     @classmethod
     def get_menu_meals(cls, id):
-        for meal in cls.menu:
-            if meal.id == id:
+
+        for meal in cls.meals:
+            if meal['id'] == id:
                 return meal
 
     @classmethod
     def get_order(cls, id):
         for order in cls.orders:
-            if order.id == id:
+            if order['id'] == id:
                 return order
