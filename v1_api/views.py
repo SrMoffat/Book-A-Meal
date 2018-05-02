@@ -153,7 +153,7 @@ class MenuLog(Resource):
             menu_elements.append(meal)
             for meal in menu_elements:
                 MockDB.menu.append(meal)
-        
+
         return {'status': 201,
                 'message': 'Daily menu succesfully created!',
                 'meals': [MockDB.get_menu_meals(meal) for meal in menu_elements]
@@ -184,9 +184,11 @@ class OrderLog(Resource):
         for order in order_request:
             meal_item = order.get('meal_id')
             quantity = order['quantity']
+            # import pdb
+            # pdb.set_trace()
 
             for meal in MockDB.menu:
-                if meal_item == meal.id:
+                if meal_item == MockDB.meals[0]['id']:
                     order = Order(meal, current_user, quantity)
                     orders.append(order)
 

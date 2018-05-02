@@ -18,7 +18,7 @@ class TestBookAMeal(unittest.TestCase):
         self.app = create_app(config_name='testing')
         self.app.testing = True
         self.app = self.app.test_client()
-        meal = {
+        self.meal = {
             'id': 1,
             'owner': 'owner',
             'name': 'name',
@@ -29,7 +29,7 @@ class TestBookAMeal(unittest.TestCase):
             'date_posted': 'date',
             'order': 0
         }
-        MockDB.meals.append(meal)
+        MockDB.meals.append(self.meal)
 
         self.data = {
             'default': {
@@ -258,6 +258,52 @@ class TestBookAMeal(unittest.TestCase):
                                 content_type='application/json',
                                 headers=dict(Authorization='Bearer ' + token))
         self.assertEqual(response.status_code, 200)
+
+    # 8. POST/api/v1/orders/
+    def test_post_orders(self):
+        """Test the place order endpoint POST/api/v1/orders/
+        """
+        response = self.app.post('/api/v1/orders/')
+        # No authorization with the token
+        self.assertEqual(response.status_code, 401)
+
+        # With authorization
+        response = self.app.post('/api/v1/auth/signup',
+                                 data=json.dumps(self.data['admin']),
+                                 content_type='application/json')
+        # self.assertEqual(response.status_code, 201)
+
+        response = self.app.post('/api/v1/auth/login',
+                                 data=json.dumps(self.data['admin_login']),
+                                 content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+
+        token = json.loads(response.data).get('token')
+
+        response = self.app.post('/api/v1/meals/',
+                                 data=json.dumps(self.meal),
+                                 content_type='application/json',
+                                 headers=dict(Authorization='Bearer ' + token))
+        self.assertEqual(response.status_code, 201)
+
+        response = self.app.post('/api/v1/menu/',
+                                 data=json.dumps(self.data['add_menu']),
+                                 content_type="application/json",
+                                 headers=dict(Authorization='Bearer ' + token))
+        self.assertEqual(response.status_code, 201)
+
+        data = {
+            'orders': [{
+                'meal_id': 1,
+                'quantity': 1
+            }]
+        }
+        response = self.app.post("/api/v1/orders/",
+                                 data=json.dumps(data),
+                                 headers=dict(Authorization='Bearer ' + token),
+                                 content_type='application/json')
+
+        self.assertEqual(response.status_code, 201)
 
     def tearDown(self):
 

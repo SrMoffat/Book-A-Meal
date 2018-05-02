@@ -108,7 +108,7 @@ class Order(object):
         self.meal = meal
         self.owner = user
         self.quantity = quantity
-        self.time_ordered = datetime.datetime.utcnow()
+        self.time_ordered = datetime.utcnow()
 
         Order.__CURSOR += 1
 
@@ -182,5 +182,5 @@ class MockDB(object):
     @classmethod
     def get_order(cls, id):
         for order in cls.orders:
-            if order.id == id:
+            if order['id'] == id:
                 return order
