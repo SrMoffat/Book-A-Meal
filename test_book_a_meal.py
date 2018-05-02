@@ -190,7 +190,7 @@ class TestBookAMeal(unittest.TestCase):
         """ Test the user clearance level
         """
         uri = "/api/v1/auth/signup"
-        # Basic user tries level 2 access
+
         data = {
             "username": "tester",
             "email": "tester@mail.com",
@@ -236,6 +236,28 @@ class TestBookAMeal(unittest.TestCase):
                                  headers=dict(Authorization='Bearer ' + token))
 
         self.assertEqual(response.status_code, 201)
+
+    # 7. GET/api/v1/menu/
+    def test_get_menu(self):
+        """Test the get daily menu endpoint GET/api/v1/menu/
+        """
+        response = self.app.get('/api/v1/menu/')
+        # No authorization with the token
+        self.assertEqual(response.status_code, 401)
+
+        # With authorization
+        response = self.app.post('/api/v1/auth/signup',
+                                 data=json.dumps(self.data['admin']),
+                                 content_type='application/json')
+
+        response = self.app.post('/api/v1/auth/login',
+                                 data=json.dumps(self.data['admin_login']),
+                                 content_type='application/json')
+        token = json.loads(response.data).get('token')
+        response = self.app.get('/api/v1/menu/',
+                                content_type='application/json',
+                                headers=dict(Authorization='Bearer ' + token))
+        self.assertEqual(response.status_code, 200)
 
     def tearDown(self):
 
