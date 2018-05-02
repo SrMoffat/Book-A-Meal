@@ -6,10 +6,18 @@ python:
 cache: pip
 install: 
   - pip install -r requirements.txt
-
-
+  - pip install coveralls
+  
 script: 
   - python test_book_a_meal.py
 
+branches:
+  only:
+  - develop
+  - ch-make-tests-atomic
+
 notifications: 
   email: false
+
+after success:
+  - coveralls

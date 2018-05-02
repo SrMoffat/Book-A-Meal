@@ -305,6 +305,11 @@ class TestBookAMeal(unittest.TestCase):
 
         self.assertEqual(response.status_code, 201)
 
+    # 9. GET/api/v1/orders/
+    def test_get_orders(self):
+        """Test the endpoint for getting orders GET/api/v1/orders/
+        """
+        
     def tearDown(self):
 
         pass
