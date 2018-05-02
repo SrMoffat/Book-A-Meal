@@ -2,9 +2,10 @@
 import unittest
 import json
 from app import create_app
+from app.models import MockDB
 
 
-class TestUserAuthentication(unittest.TestCase):
+class TestBookAMeal(unittest.TestCase):
     """
     This class represents the user authentication test case
     """
@@ -17,6 +18,18 @@ class TestUserAuthentication(unittest.TestCase):
         self.app = create_app(config_name='testing')
         self.app.testing = True
         self.app = self.app.test_client()
+        meal = {
+            'id': 1,
+            'owner': 'owner',
+            'name': 'name',
+            'category': 'category',
+            'price': 1000,
+            'image_url': 'url',
+            'description': 'desc',
+            'date_posted': 'date',
+            'order': 0
+        }
+        MockDB.meals.append(meal)
 
         self.data = {
             'default': {
@@ -53,6 +66,9 @@ class TestUserAuthentication(unittest.TestCase):
             'admin_login': {
                 "username": "admin",
                 "password": "adminpass",
+            },
+            'add_menu': {
+                'meals': [1]
             }
         }
 
@@ -70,7 +86,6 @@ class TestUserAuthentication(unittest.TestCase):
 
         # Ensure the response has a token
         response_data = json.loads(response.data)
-        print(response_data)
 
         self.assertTrue('token' in response_data,
                         msg='No token included in response')
@@ -200,6 +215,27 @@ class TestUserAuthentication(unittest.TestCase):
                                  content_type="application/json",
                                  headers=dict(Authorization="Bearer " + token))
         self.assertEqual(response.status_code, 401)
+
+    # 6. POST/api/v1/menu/
+    def test_set_day_menu(self):
+        """ Test the set day menu endpoint POST/api/v1/menu
+        """
+        response = self.app.post('/api/v1/auth/signup',
+                                 data=json.dumps(self.data['admin']),
+                                 content_type='application/json')
+
+        response = self.app.post('/api/v1/auth/login',
+                                 data=json.dumps(self.data['admin_login']),
+                                 content_type='application/json')
+
+        token = json.loads(response.data).get('token')
+
+        response = self.app.post('/api/v1/menu/',
+                                 data=json.dumps(self.data['add_menu']),
+                                 content_type='application/json',
+                                 headers=dict(Authorization='Bearer ' + token))
+
+        self.assertEqual(response.status_code, 201)
 
     def tearDown(self):
 
