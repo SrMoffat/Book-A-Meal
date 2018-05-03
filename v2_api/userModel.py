@@ -78,3 +78,30 @@ class User(db.Model):
                 errors.append('Invalid username')
 
         return data_is_valid, errors
+
+        @password.setter
+        def password(self, password):
+            """Ensure password is automatically hashed before storage
+            """
+            self.password_hash = generate_password_hash(password)
+
+        def verify_password(self, password):
+            """Check hash value against hash in storage
+            """
+            return check_password_hash(self.password_hash, password)
+
+        def access_level(self, level):
+            """Return True if user is allowed
+            """
+            return self.clearance.clearance_level >= level
+
+        def save(self):
+            """Save and commit user to storage
+            """
+            db.session.add(self)
+            db.session.commit()
+
+        def make_token(self):
+            """Create an auth token
+            """
+            return create_access_token(identity=self.username)
