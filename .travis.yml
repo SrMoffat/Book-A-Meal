@@ -20,4 +20,5 @@ notifications:
   email: false
 
 after success:
+  
   - coveralls

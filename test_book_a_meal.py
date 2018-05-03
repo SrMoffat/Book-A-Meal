@@ -271,7 +271,6 @@ class TestBookAMeal(unittest.TestCase):
         response = self.app.post('/api/v1/auth/signup',
                                  data=json.dumps(self.data['admin']),
                                  content_type='application/json')
-        # self.assertEqual(response.status_code, 201)
 
         response = self.app.post('/api/v1/auth/login',
                                  data=json.dumps(self.data['admin_login']),
@@ -309,7 +308,27 @@ class TestBookAMeal(unittest.TestCase):
     def test_get_orders(self):
         """Test the endpoint for getting orders GET/api/v1/orders/
         """
-        
+        response = self.app.get('/api/v1/orders/')
+        self.assertEqual(response.status_code, 401)
+
+        # With authorization
+        response = self.app.post('/api/v1/auth/signup',
+                                 data=json.dumps(self.data['admin']),
+                                 content_type='application/json')
+
+        response = self.app.post('/api/v1/auth/login',
+                                 data=json.dumps(self.data['admin_login']),
+                                 content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+
+        token = json.loads(response.data).get('token')
+
+        response = self.app.get('/api/v1/orders/',
+                                content_type='application/json',
+                                headers=dict(Authorization='Bearer ' + token))
+
+        self.assertEqual(response.status_code, 200)
+
     def tearDown(self):
 
         pass
