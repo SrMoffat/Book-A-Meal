@@ -45,6 +45,7 @@ class Register(Resource):
         clearance = request.get_json().get('clearance', None)
         if clearance is None:
             clearance = 1
+
         permission = Clearance.query.filter_by(
             clearance_level=clearance).first()
 

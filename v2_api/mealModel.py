@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from v2_api.userModel import db
 
 
@@ -13,7 +14,7 @@ class Meal(db.Model):
     price = db.Column(db.Float)
     image_url = db.Column(db.String(128))
     description = db.Column(db.String)
-    caterer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    caterer_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     caterer = db.relationship('User',
                               backref=db.backref('meals', lazy=True))
     date_posted = db.Column(db.DateTime,
@@ -31,7 +32,7 @@ order_meals = db.Table('order_meals',
                        db.Column('order_id', db.Integer,
                                  db.ForeignKey('orders.id')),
                        db.Column('meal_id', db.Integer,
-                                 db.ForeignKey('meal.id')),
+                                 db.ForeignKey('meals.id')),
                        db.Column('quantity', db.Integer, default=1))
 
 
@@ -41,7 +42,7 @@ class Order(db.Model):
     __tablename__ = 'orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = db.relationship('User',
                            backref=db.backref('orders', lazy=True))
     meals = db.relationship('Meal',
@@ -68,7 +69,7 @@ class Menu(db.Model):
     __tablename__ = 'menus'
 
     id = db.Column(db.Integer, primary_key=True)
-    meal_id = db.Column(db.Integer, db.ForeignKey('meal.id'))
+    meal_id = db.Column(db.Integer, db.ForeignKey('meals.id'))
 
     # Owner
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
