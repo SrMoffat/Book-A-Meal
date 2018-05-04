@@ -1,5 +1,5 @@
 from datetime import datetime
-from userModel import db
+from v2_api.userModel import db
 
 
 class Meal(db.Model):
@@ -26,12 +26,13 @@ class Meal(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    order_meals = db.Table('order_meals',
-                           db.Column('order_id', db.Integer,
-                                     db.ForeignKey('orders.id')),
-                           db.Column('meal_id', db.Integer,
-                                     db.ForeignKey('meal.id')),
-                           db.Column('quantity', db.Integer, default=1))
+
+order_meals = db.Table('order_meals',
+                       db.Column('order_id', db.Integer,
+                                 db.ForeignKey('orders.id')),
+                       db.Column('meal_id', db.Integer,
+                                 db.ForeignKey('meal.id')),
+                       db.Column('quantity', db.Integer, default=1))
 
 
 class Order(db.Model):

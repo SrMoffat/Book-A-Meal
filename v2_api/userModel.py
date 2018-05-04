@@ -30,16 +30,16 @@ class Clearance(db.Model):
 
         default_clearance = 'customer'
 
-            for clearance in clearances:
-                user_clearance = Clearance.query.filter_by(
-                    name=clearance).first()
-                    if user_clearance is None:
-                        clearance = Clearance(
-                            name=clearance,
-                            clearance_level=clearances[clearance],
-                            default_clearance_level=(clearance == default_clearance))
-                        db.session.add(clearance)
-                    db.session.commit()
+        for clearance in clearances:
+            user_clearance = Clearance.query.filter_by(
+                name=clearance).first()
+            if user_clearance is None:
+                clearance = Clearance(
+                    name=clearance,
+                    clearance_level=clearances[clearance],
+                    default_clearance_level=(clearance == default_clearance))
+                db.session.add(clearance)
+            db.session.commit()
 
     def __str__(self):
         """Outputting more user-friendly information
@@ -59,7 +59,7 @@ class User(db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True)
     password_hash = db.Column(db.String(128))
-    clearance_id = db.Column(db.Integer, db.Foreign('clearance.id'))
+    clearance_id = db.Column(db.Integer, db.ForeignKey('clearance.id'))
 
     def data_validation(self):
         """Data validation methods

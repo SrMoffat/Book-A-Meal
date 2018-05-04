@@ -1,3 +1,5 @@
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -38,15 +40,9 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
 .cache
 nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
+
 
 # Translations
 *.mo
@@ -104,5 +100,3 @@ ENV/
 .vscode/
 UI/images/tick.svg
 *.swp
-
-v2_api/__pycache__
