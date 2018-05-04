@@ -184,8 +184,6 @@ class OrderLog(Resource):
         for order in order_request:
             meal_item = order.get('meal_id')
             quantity = order['quantity']
-            # import pdb
-            # pdb.set_trace()
 
             for meal in MockDB.menu:
                 if meal_item == MockDB.meals[0]['id']:
