@@ -38,7 +38,6 @@ def create_app(config_name):
     app.config.from_object(app_config['testing'])
     app.config.from_pyfile('config.py')
     app.config['JWT_SECRET_KEY'] = '4fr0c0d3'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     jwt.init_app(app)
     ma.init_app(app)

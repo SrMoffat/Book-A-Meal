@@ -30,7 +30,6 @@ class Register(Resource):
     def post(self):
         """CREATE a new user
         """
-
         username = request.get_json().get('username', None)
         email = None
         if 'email' in request.get_json():
@@ -57,10 +56,9 @@ class Register(Resource):
                 'message': 'The user already exists!'
             }, 409
 
-        user = User(username=username, email=email, password=password,
-                    clearance=permission)
+        user = User(username=username, password=password,
+                    clearance=permission, email=email)
         input_is_valid, errs = user.data_validation()
-
         if not input_is_valid:
             return {
                 'errors': errs
@@ -104,7 +102,6 @@ class Login(Resource):
 
         return {
             'status': 200,
-            'message': 'Successful authentication!',
             'token': user.make_token()
         }, 200
 

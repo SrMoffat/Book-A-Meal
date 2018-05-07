@@ -1,7 +1,7 @@
 """ Api Version with Persistence """
 from flask import Blueprint, request
 from flask_restful import Api, Resource, url_for, abort
-from v2_api.api.views import Meal, MealLog, MenuLog
+from v2_api.api.views import Meal, MealLog, MenuLog, OrderLog, OrderResource
 from v2_api.api.auth import Register, Login, UserResource
 
 api2_arch = Blueprint('v2_api', __name__)
@@ -23,4 +23,6 @@ api.add_resource(Login, '/auth/login')
 api.add_resource(Meal, '/meal/<int:meal_id>', endpoint='meal')
 api.add_resource(MealLog, '/meals/', endpoint='meals')
 api.add_resource(MenuLog, '/menu/')
+api.add_resource(OrderLog, '/orders/')
+api.add_resource(OrderResource, '/order/<int:order_id>')
 api.add_resource(UserResource, '/user/')

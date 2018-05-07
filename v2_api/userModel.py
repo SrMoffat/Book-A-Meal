@@ -30,12 +30,14 @@ class Clearance(db.Model):
 
         default_clearance = 'customer'
 
-        for clrn in clearances:
-            user_clearance = Clearance.query.filter_by(name=clrn).first()
+        for clearance in clearances:
+            user_clearance = Clearance.query.filter_by(
+                name=clearance).first()
             if user_clearance is None:
-                clearance = Clearance(name=clrn, clearance_level=clearances[clrn], default_clearance_level=(
-                    clrn == default_clearance))
-                add_clearances()
+                clearance = Clearance(
+                    name=clearance,
+                    clearance_level=clearances[clearance],
+                    default_clearance_level=(clearance == default_clearance))
                 db.session.add(clearance)
             db.session.commit()
 
@@ -56,17 +58,8 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True)
-    password_hash = db.Column(db.String(225), nullable=False)
+    password_hash = db.Column(db.String(128))
     clearance_id = db.Column(db.Integer, db.ForeignKey('clearance.id'))
-
-    def __init__(self, **kwargs):
-        super(User, self).__init__(**kwargs)
-        if self.clearance is None:
-            self.clearance = Clearance.query.filter_by(default=True).first()
-
-    @property
-    def password(self):
-        raise AttributeError('Password is not readable')
 
     def data_validation(self):
         """Data validation methods
@@ -86,30 +79,29 @@ class User(db.Model):
 
         return data_is_valid, errors
 
-    @password.setter
-    def password(self, password):
-        """Ensure password is automatically hashed before storage
-        """
-        self.password_hash = generate_password_hash(password)
+        @password.setter
+        def password(self, password):
+            """Ensure password is automatically hashed before storage
+            """
+            self.password_hash = generate_password_hash(password)
 
-    def verify_password(self, password):
-        """Check hash value against hash in storage
-        """
-        return check_password_hash(self.password_hash, password)
+        def verify_password(self, password):
+            """Check hash value against hash in storage
+            """
+            return check_password_hash(self.password_hash, password)
 
-    def access_level(self, level):
-        """Return True if user is allowed
-        """
+        def access_level(self, level):
+            """Return True if user is allowed
+            """
+            return self.clearance.clearance_level >= level
 
-        return self.clearance.clearance_level >= level
+        def save(self):
+            """Save and commit user to storage
+            """
+            db.session.add(self)
+            db.session.commit()
 
-    def save(self):
-        """Save and commit user to storage
-        """
-        db.session.add(self)
-        db.session.commit()
-
-    def make_token(self):
-        """Create an auth token
-        """
-        return create_access_token(identity=self.username)
+        def make_token(self):
+            """Create an auth token
+            """
+            return create_access_token(identity=self.username)

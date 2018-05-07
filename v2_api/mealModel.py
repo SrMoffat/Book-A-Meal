@@ -36,6 +36,33 @@ order_meals = db.Table('order_meals',
                        db.Column('quantity', db.Integer, default=1))
 
 
+class Order(db.Model):
+    """The model for an order
+    """
+    __tablename__ = 'orders'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User',
+                           backref=db.backref('orders', lazy=True))
+    meals = db.relationship('Meal',
+                            secondary=order_meals,
+                            lazy='subquery',
+                            backref=db.backref('orders', lazy=True))
+
+    time_ordered = db.Column(db.DateTime,
+                             nullable=False,
+                             default=datetime.utcnow
+                             )
+    delivered = db.Column(db.Boolean, default=False)
+
+    def save(self):
+        """Save and commit order to storage
+        """
+        db.session.add(self)
+        db.session.commit()
+
+
 class Menu(db.Model):
     """The model for a menu
     """
@@ -45,7 +72,7 @@ class Menu(db.Model):
     meal_id = db.Column(db.Integer, db.ForeignKey('meals.id'))
 
     # Owner
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     meal = db.relationship('Meal')
     day = db.Column(db.Date,
