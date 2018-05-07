@@ -9,10 +9,10 @@ For the dashboard pages navigate to the Github Pages site --> https://srmoffat.g
 
 # UI Installation 
 Steps required to interact with the UI elements: 
-Clone the repository into your local environment:   `git clone https://github.com/SrMoffat/Book-A-Meal` 
-Switch to book-a-meal directory you just cloned:  `cd Book-A-Meal/UI`
-Run `index.html` file in your browser. 
-It will give you these pages:
+1. Clone the repository into your local environment:   `git clone https://github.com/SrMoffat/Book-A-Meal` 
+2. Switch to book-a-meal directory you just cloned:  `cd Book-A-Meal/UI`
+3. Run `index.html` file in your browser. 
+4. It will give you these pages:
 https://srmoffat.github.io/Book-A-Meal/UI/index.html
 https://srmoffat.github.io/Book-A-Meal/UI/dashboard.html
 
@@ -44,20 +44,20 @@ Once all requirements are in place:
 
 **Endpoints on Postman**
 
-1.`POST /api/v1/auth/signup` -->	Creates a user account.
-2.`POST /api/v1/auth/login` -->	Logs in a user.
-3.`POST /api/v1/meals/` -->	Add a meal option. Only admin (Caterer) has access.
-4.`GET api/v1/meals/` -->	Get all meal options. Only admin (Caterer) has access.
-5.`PUT api/v1/meals/<mealid>`	--> Update the information of a meal option. Only admin (Caterer) has access.
-6.`DELETE api/v1/meals/<mealid>`	--> Remove a meal option.Only admin (Caterer) has access.
-7.`POST api/v1/menu`	--> Set up the menu for the day. Only admin (Caterer) has access.
-8.`GET api/v1/menu` -->	Get the menu for the day.
-9.`POST api/v1/orders`	Select the meal option from the menu.
-10.`PUT api/v1/orders/<orderid>`	Modify an order.
-11.`GET api/v1/orders`	Get all the orders.Only admin (Caterer) has access.
+1. `POST /api/v1/auth/signup` -->	Creates a user account.
+2. `POST /api/v1/auth/login` -->	Logs in a user.
+3. `POST /api/v1/meals/` -->	Add a meal option. Only admin (Caterer) has access.
+4. `GET api/v1/meals/` -->	Get all meal options. Only admin (Caterer) has access.
+5. `PUT api/v1/meals/<mealid>`	--> Update the information of a meal option. Only admin (Caterer) has access.
+6. `DELETE api/v1/meals/<mealid>`	--> Remove a meal option.Only admin (Caterer) has access.
+7. `POST api/v1/menu`	--> Set up the menu for the day. Only admin (Caterer) has access.
+8. `GET api/v1/menu` -->	Get the menu for the day.
+9. `POST api/v1/orders`	Select the meal option from the menu.
+10. `PUT api/v1/orders/<orderid>`	Modify an order.
+11. `GET api/v1/orders`	Get all the orders.Only admin (Caterer) has access.
 
 **API Documentation**
 
-Find the document on -->
+Find the document on --> https://app.swaggerhub.com/apis/4fr0c0d3/Book-A-Meal/2.0#/
 
 
