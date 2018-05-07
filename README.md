@@ -19,7 +19,7 @@ https://srmoffat.github.io/Book-A-Meal/UI/dashboard.html
 # API Intsallation 
 Steps required to interact with the API endpoints:
 
-**Requirements: **
+**Requirements:**
 
 Ensure that you have the following in your machine:
 1.Python 3.x
