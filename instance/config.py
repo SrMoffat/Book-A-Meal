@@ -13,6 +13,7 @@ class Config(object):
     DEBUG = False
     CSRF_ENABLED = True
     SECRET = os.getenv('SECRET')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
 
 class DevelopmentConfig(Config):
@@ -27,6 +28,8 @@ class TestingConfig(Config):
     Configurations for Testing, with a separte database
     """
     TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:rootuser@localhost:5432/4bam_db'
+    'postgresql://localhost/4bam_db'
     DEBUG = True
 
 
