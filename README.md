@@ -17,9 +17,5 @@ For the dashboard pages navigate to the Github Pages site --> https://srmoffat.g
 # Dashboard
 ![Dashboard](Admin.PNG)
 
-# Menu
-![Menu](menu.PNG)
 
-# Orders
-![Orders](orders.PNG)
 
