@@ -25,6 +25,7 @@ Ensure that you have the following in your machine:
 1.Python 3.x
 2.Git
 3.Browser or Postman 
+4.PostgreSQL
 4.Virutal environment 
 
 Once all requirements are in place:
@@ -34,9 +35,8 @@ Once all requirements are in place:
 3. Create a virtual environment `virtualenv venv`
 4. Activate the virtual environment you just created `cd venv/bin/activate`
 5. Install all dependencies into your virtual environment `pip install -r requirements.txt`
-6.Confirm you have all packages installed `pip freeze`
-7.Set environment variables for APP_SETTINGS `export APP_SETTINGS="development"`
-8.Set the entry point for the app `export FLASK_APP="run.py"`
+6. Confirm you have all packages installed `pip freeze`
+7. Set the entry point for the app `export FLASK_APP="run.py"`
 
 **Run the API**
 
