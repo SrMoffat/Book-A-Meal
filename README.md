@@ -22,11 +22,11 @@ Steps required to interact with the API endpoints:
 **Requirements:**
 
 Ensure that you have the following in your machine:
-1.Python 3.x
-2.Git
-3.Browser or Postman 
-4.PostgreSQL
-4.Virutal environment 
+1. Python 3.x
+2. Git
+3. Browser or Postman 
+4. PostgreSQL
+4. Virutal environment 
 
 Once all requirements are in place:
 
