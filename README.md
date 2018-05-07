@@ -29,11 +29,11 @@ Ensure that you have the following in your machine:
 
 Once all requirements are in place:
 
-1.Clone the repo into a folder of your choice: git clone `https://github.com/SrMoffat/Book-A-Meal/`
-2.Navigate to the cloned folder `cd Book-A-Meal`
-3.Create a virtual environment `virtualenv venv`
-4.Activate the virtual environment you just created `source venv/bin/activate`
-5.Install all dependencies into your virtual environment `pip install -r requirements.txt`
+1. Clone the repo into a folder of your choice: git clone `https://github.com/SrMoffat/Book-A-Meal/`
+2. Navigate to the cloned folder `cd Book-A-Meal`
+3. Create a virtual environment `virtualenv venv`
+4. Activate the virtual environment you just created `source venv/bin/activate`
+5. Install all dependencies into your virtual environment `pip install -r requirements.txt`
 6.Confirm you have all packages installed `pip freeze`
 7.Set environment variables for APP_SETTINGS `export APP_SETTINGS="development"`
 8.Set the entry point for the app `export FLASK_APP="run.py"`
