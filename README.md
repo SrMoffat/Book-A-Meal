@@ -32,7 +32,7 @@ Once all requirements are in place:
 1. Clone the repo into a folder of your choice: git clone `https://github.com/SrMoffat/Book-A-Meal/`
 2. Navigate to the cloned folder `cd Book-A-Meal`
 3. Create a virtual environment `virtualenv venv`
-4. Activate the virtual environment you just created `source venv/bin/activate`
+4. Activate the virtual environment you just created `cd venv/bin/activate`
 5. Install all dependencies into your virtual environment `pip install -r requirements.txt`
 6.Confirm you have all packages installed `pip freeze`
 7.Set environment variables for APP_SETTINGS `export APP_SETTINGS="development"`
@@ -46,18 +46,18 @@ Once all requirements are in place:
 
 1. `POST /api/v1/auth/signup` -->	Creates a user account.
 2. `POST /api/v1/auth/login` -->	Logs in a user.
-3. `POST /api/v1/meals/` -->	Add a meal option. Only admin (Caterer) has access.
-4. `GET api/v1/meals/` -->	Get all meal options. Only admin (Caterer) has access.
-5. `PUT api/v1/meals/<mealid>`	--> Update the information of a meal option. Only admin (Caterer) has access.
+3. `POST /api/v1/meals/`   -->    Add a meal option. Only admin (Caterer) has access.
+4. `GET api/v1/meals/`  -->	      Get all meal options. Only admin (Caterer) has access.
+5. `PUT api/v1/meals/<mealid>`--> Update the information of a meal option. Only admin (Caterer) has access.
 6. `DELETE api/v1/meals/<mealid>`	--> Remove a meal option.Only admin (Caterer) has access.
-7. `POST api/v1/menu`	--> Set up the menu for the day. Only admin (Caterer) has access.
-8. `GET api/v1/menu` -->	Get the menu for the day.
-9. `POST api/v1/orders`	Select the meal option from the menu.
+7. `POST api/v1/menu`  	-->       Set up the menu for the day. Only admin (Caterer) has access.
+8. `GET api/v1/menu`  -->	        Get the menu for the day.
+9. `POST api/v1/orders`	         Select the meal option from the menu.
 10. `PUT api/v1/orders/<orderid>`	Modify an order.
 11. `GET api/v1/orders`	Get all the orders.Only admin (Caterer) has access.
 
 **API Documentation**
 
-Find the document on --> https://app.swaggerhub.com/apis/4fr0c0d3/Book-A-Meal/2.0#/
+Find the draft .yaml on swagger documentation here --> https://app.swaggerhub.com/apis/4fr0c0d3/Book-A-Meal/2.0#/
 
 
