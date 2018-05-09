@@ -20,6 +20,9 @@ def clearance_required(access_level):
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
+            import pdb
+            pdb.set_trace()
+
             if not current_user:
                 return make_response(jsonify({"message": "Unauthorized!",
                                               "status": 401}), 401)

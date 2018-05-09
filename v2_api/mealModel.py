@@ -72,7 +72,7 @@ class Menu(db.Model):
     meal_id = db.Column(db.Integer, db.ForeignKey('meals.id'))
 
     # Owner
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     meal = db.relationship('Meal')
     day = db.Column(db.Date,
